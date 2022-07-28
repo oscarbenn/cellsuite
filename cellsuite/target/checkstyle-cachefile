@@ -1,5 +1,6 @@
-#Tue Jul 26 23:27:40 WIB 2022
+#Wed Jul 27 09:59:22 WIB 2022
 configuration*?=7DBB243677F7D82A2253549D8AE8537CC6E6B9B0
-C\:\\Users\\smith\\OneDrive\\Documents\\INTERN\\Cell\\cellsuite\\cellsuite\\src\\test\\java\\cellsuite\\AppTest.java=1658852209415
+C\:\\Users\\smith\\OneDrive\\Documents\\INTERN\\Cell\\cellsuite\\cellsuite\\src\\test\\resources\\cucumber.properties=1658828798295
 C\:\\Users\\smith\\OneDrive\\Documents\\INTERN\\Cell\\cellsuite\\cellsuite\\src\\main\\java\\cellsuite\\App.java=1658852209408
-module-resource*?\:checkstyle/suppressions.xml=3951608C1CABC87BA361E376699CE67B36D366FF
+C\:\\Users\\smith\\OneDrive\\Documents\\INTERN\\Cell\\cellsuite\\cellsuite\\src\\test\\resources\\junit-platform.properties=1658828813241
+module-resource*?\:checkstyle/suppressions.xml=FEBCBBAE7D42C844AE1911742074BF402EE8E493

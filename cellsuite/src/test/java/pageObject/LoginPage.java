@@ -14,8 +14,10 @@ public class LoginPage {
     WebElement txt_username;
     @FindBy(id = "password")
     WebElement txt_password;
-    @FindBy(xpath = "//button[@type=\"submit\"]")
+    @FindBy(xpath = "//button[@data-testid=\"login-button\"]")
     WebElement btn_login;
+    @FindBy(xpath = "//div[@role=\"alert\"]")
+    WebElement err_massage;
 
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -23,8 +25,8 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, LoginPage.this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.titleContains("Suite"));
     }
 
     public void enterUsername(String username) {
@@ -33,15 +35,26 @@ public class LoginPage {
     }
 
     public void enterPassword(String password) {
+        wait.until(ExpectedConditions.visibilityOf(txt_password));
         txt_password.sendKeys(password);
     }
 
     public void clickButtonLogin() {
+        wait.until(ExpectedConditions.elementToBeClickable(btn_login));
         btn_login.click();
-        wait.until(ExpectedConditions.invisibilityOf(btn_login));
     }
 
     public Boolean checkLoginButton(){
         return btn_login.isDisplayed();
+    }
+
+    public String getNotificationError() {
+        wait.until(ExpectedConditions.visibilityOf(err_massage));
+        return err_massage.getText();
+    }
+
+    public String getValidationError() {
+        wait.until(ExpectedConditions.visibilityOf(err_massage));
+        return err_massage.getText();
     }
 }
