@@ -6,11 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ReagentLibraryPage {
     
-    @FindBy(xpath = "//div[@class=\"dashboard-header-content\"]/child::span")
+    @FindBy(xpath = "//div[@class=\"ant-page-header-heading\"]/child::div")
     WebElement app_title;
     @FindBy(xpath = "//button[@data-testid=\"create-button\"]")
     WebElement btn_create;
@@ -18,6 +19,11 @@ public class ReagentLibraryPage {
     WebElement btn_delete;
     @FindBy(xpath = "//span[@data-testid=\"edit-icon\"]")
     WebElement btn_edit;
+
+    @FindBy(xpath = "//div[@role=\"alert\"]/child::div[1]")
+    WebElement notif_alert;
+    @FindBy(xpath = "//div[@role=\"alert\"]/child::div[2]")
+    WebElement desc_alert;
     
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -29,11 +35,26 @@ public class ReagentLibraryPage {
     }
 
     public String getTitleofPage() {
+        wait.until(ExpectedConditions.visibilityOf(app_title));
         return app_title.getText();
     }
 
     public void clickButtonCreate() {
         btn_create.click();
+        wait.until(ExpectedConditions.invisibilityOf(app_title));
+    }
+
+    public Boolean checknotif() {
+        wait.until(ExpectedConditions.visibilityOf(notif_alert));
+        return notif_alert.isDisplayed();
+    }
+
+    public String getNotifMsg() {
+        return notif_alert.getText();
+    }
+
+    public Object getDescNotif() {
+        return null;
     }
 
 

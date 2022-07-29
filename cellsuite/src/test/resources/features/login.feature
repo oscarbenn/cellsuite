@@ -5,7 +5,7 @@ Feature: login feature
 
     Background: user is navigated to login page
         Given user is navigated to website "http://localhost:5050/"
-        Then user is on "Login" page
+        Then user is navigated to "Login" page
 
     @loginsuccess
     Scenario: login will success with valid credentials

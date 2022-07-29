@@ -79,6 +79,7 @@
             </goals>
             <configuration>
               <rules>
+                <?m2e execute onConfiguration?>
                 <requireMavenVersion>
                   <version>3.6.3</version>
                 </requireMavenVersion>

@@ -31,7 +31,7 @@ public class DashboardPage {
     }
 
     public Boolean checkbtnlogout(){
-        wait.until(ExpectedConditions.visibilityOf(btn_logout));
+        wait.until(ExpectedConditions.visibilityOf(title_app));
         return btn_logout.isDisplayed();
     }
 

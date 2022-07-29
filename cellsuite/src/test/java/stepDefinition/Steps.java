@@ -54,12 +54,6 @@ public class Steps {
         driver.get(url);
         loginPage = new LoginPage(driver);
     }
-    @Then("user is on {string} page")
-    public void user_is_on_page(String page) {
-        if (page.equalsIgnoreCase("Login")) {
-            assertTrue(loginPage.checkLoginButton());
-        }
-    }
     @When("user enters username as {string}")
     public void user_enters_username_as(String username) {
         loginPage.enterUsername(username);
@@ -76,19 +70,23 @@ public class Steps {
         } else if (button.equalsIgnoreCase("Create Reagent")) {
             reagentLibraryPage.clickButtonCreate();
             createReagentPage = new CreateReagentPage(driver);
-        } else if (button=="Save") {
+        } else if (button.equalsIgnoreCase("Save")) {
             createReagentPage.clickbtnsave();
+            reagentLibraryPage = null;
             reagentLibraryPage = new ReagentLibraryPage(driver);
-        }
+        } else{System.out.println("salah");}
     }
     @Then("user is navigated to {string} page")
     public void user_is_navigated_to_page(String page) {
-        if (page=="Dashboard") {
+        if (page.equalsIgnoreCase("Login")) {
+            assertTrue(loginPage.checkLoginButton());
+        }else if (page.equalsIgnoreCase("Dashboard")) {
             assertTrue(dashboardPage.checkbtnlogout());
-        }
-        if (page=="Reagent Library"){
+        } else if (page.equalsIgnoreCase("Reagent Library")){
             assertEquals(page, reagentLibraryPage.getTitleofPage());
-        }
+        } else if (page.equalsIgnoreCase("Create Reagent")) {
+            assertEquals(page, createReagentPage.gettitleapp());
+        } else{System.out.println("salah");}
     }
     @Then("error notification {string} is displayed")
     public void error_notification_is_display(String errorExpected) {
@@ -101,51 +99,50 @@ public class Steps {
 
     @When("user clicks on menu {string}")
     public void user_clicks_on_menu(String menu) {
-        //dashboardPage = new DashboardPage(driver);
         dashboardPage.clickbtnMenu(menu);
     }
     @When("user clicks on sub-menu {string}")
     public void user_clicks_on_sub_menu(String submenu) {
-        dashboardPage.clickbtnSubMenu(submenu);
-        reagentLibraryPage = new ReagentLibraryPage(driver);
-    }
-    @Then("user is redirected into {string} page")
-    public void user_is_redirected_into_page(String page) {
-        if (page.equalsIgnoreCase("Create Reagent")) {
-            assertEquals(page, createReagentPage.gettitleapp());
-        }
+        if (submenu.equalsIgnoreCase("Library")) {
+            dashboardPage.clickbtnSubMenu(submenu);
+            reagentLibraryPage = new ReagentLibraryPage(driver);
+        } else{System.out.println("salah");}
     }
     @When("user type reagent {string} as {string}")
     public void user_type_reagent_as(String textbox, String fill) {
         if (textbox.equalsIgnoreCase("name")) {
             createReagentPage.entersName(fill);
         } else if (textbox.equalsIgnoreCase("note")) {
-            
-        }
+            createReagentPage.entersNotes(fill);
+        } else{System.out.println("salah");}
     }
     @Then("{string} is typed on {string} textbox")
     public void is_typed_on_textbox(String fill, String textbox) {
         if (textbox.equalsIgnoreCase("name")) {
             assertEquals(fill, createReagentPage.getNameValue()); 
         } else if (textbox.equalsIgnoreCase("note")) {
-            
-        }
+            assertEquals(fill, createReagentPage.getNotesValue());
+        } else{System.out.println("salah");}
     }
     @When("user select {string} on {string}")
     public void user_select_on(String opsi, String selectbox) {
         if (selectbox.equalsIgnoreCase("type")) {
             createReagentPage.chooseType(opsi);
-        }
+        } else{System.out.println("salah");}
     }
     @Then("{string} is selected on {string}")
     public void is_selected_on(String opsi, String selectbox) {
         if (selectbox.equalsIgnoreCase("type")) {
             assertEquals(opsi, createReagentPage.getTypeValue());
-        }
+        } else{System.out.println("salah");}
     }
-    @Then("new {string} item is created with notification {string}")
-    public void new_item_is_created_with_notification(String item, String notif) {
-        
+    @Then("new {string} item is created with notification {string} and {string}")
+    public void new_item_is_created_with_notification_and(String item, String notif, String desc) {
+        if (item.equalsIgnoreCase("reagent")) {
+            assertTrue(reagentLibraryPage.checknotif());
+            assertEquals(notif, reagentLibraryPage.getNotifMsg());
+            assertEquals(desc, reagentLibraryPage.getDescNotif());
+        } else{System.out.println("salah");}
     }
     @Then("There is no new {string} item created")
     public void there_is_no_new_item_created(String item) {

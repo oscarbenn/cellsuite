@@ -2,7 +2,6 @@ package pageObject;
 
 import java.time.Duration;
 
-import org.bouncycastle.pqc.jcajce.provider.rainbow.SignatureSpi.withSha224;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,6 +29,7 @@ public class LoginPage {
     }
 
     public void enterUsername(String username) {
+        wait.until(ExpectedConditions.elementToBeClickable(btn_login));
         txt_username.sendKeys(username);
     }
 
@@ -38,8 +38,8 @@ public class LoginPage {
     }
 
     public void clickButtonLogin() {
-        wait.until(ExpectedConditions.elementToBeClickable(btn_login));
         btn_login.click();
+        wait.until(ExpectedConditions.invisibilityOf(txt_username));
     }
 
     public Boolean checkLoginButton(){

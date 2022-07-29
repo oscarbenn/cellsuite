@@ -3,6 +3,7 @@ package pageObject;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +24,9 @@ public class CreateReagentPage {
     WebElement txt_reagentname;
     @FindBy(xpath = "//div[@data-testid=\"reagent-type\"]")
     WebElement select_reagenttype;
+    @FindBy(xpath = "//div[@data-testid=\"reagent-type\"]/child::div/child::span[2]")
+    WebElement inputselect_reagenttype;
+
     @FindBy(xpath = "//div[@label=\"Other\"]/parent::div/child::div")
     List<WebElement> opsi_reagenttype;
     @FindBy(xpath = "//input[@data-testid=\"create-culture-reagent\"]")
@@ -37,31 +41,57 @@ public class CreateReagentPage {
         this.driver = driver;
         PageFactory.initElements(driver, CreateReagentPage.this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(btn_save));
     }
 
     public void clickbtnsave() {
         btn_save.click();
+        wait.until(ExpectedConditions.invisibilityOf(btn_close));
     }
 
     public String gettitleapp() {
+        wait.until(ExpectedConditions.elementToBeClickable(btn_save));
         return title_app.getText();
     }
 
     public void entersName(String fill) {
         txt_reagentname.sendKeys(fill);
+        txt_reagentname.sendKeys(Keys.ESCAPE);
     }
 
-    public Object getNameValue() {
+    public String getNameValue() {
         return txt_reagentname.getAttribute("value");
     }
 
     public void chooseType(String opsi) {
-        
+        select_reagenttype.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(opsi_reagenttype));
+        WebElement choosen = choose(opsi_reagenttype, opsi);
+        choosen.click();
+        wait.until(ExpectedConditions.attributeToBe(inputselect_reagenttype, "title", opsi));
     }
 
-    public Object getTypeValue() {
-        return null;
+    public String getTypeValue() {
+        return inputselect_reagenttype.getText();
+    }
+
+    public void entersNotes(String fill) {
+        text_notes.sendKeys(fill);
+    }
+
+    public String getNotesValue() {
+        return text_notes.getText();
+    }
+
+    private WebElement choose(List<WebElement> elements, String elementText) {
+        WebElement choosenElement = null;
+        for (int i = 0; i < elements.size(); i++) {
+            WebElement element = elements.get(i);
+            String label = element.getText();
+            if (label.equals(elementText)) {
+                choosenElement = element;
+            }
+        }
+        return choosenElement;
     }
 
 }
