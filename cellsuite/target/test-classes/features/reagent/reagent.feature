@@ -5,7 +5,7 @@ Feature: CRUD Reagent
 
     Background: user is logged 
     Given user is navigated to website "http://localhost:5050"
-    Then user is on "Login" page
+    Then user is on "login" page
     When user enters username as "admin"
     And user enters password as "admin"
     And user clicks on "SignIn" button
@@ -24,7 +24,9 @@ Feature: CRUD Reagent
     When user type reagent "note" as "Create Reagent 1 with Antibiotic"
     Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox
     When user clicks on "Save" button
-    Then new reagent item is created with notification "Success"
-    And There is no new "culture reagent" created
+    Then new "reagent" item is created with notification "Success"
+    And There is no new "culture reagent" item created
+
+    
 
 

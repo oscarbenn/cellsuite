@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
     
+    @FindBy(xpath = "//span[@class='app-title']")
+    WebElement title_app;
     @FindBy(xpath = "//div[@class=\"logout-button\"]")
     WebElement btn_logout;
     @FindBy(xpath = "//ul[@role=\"menu\"]/li")
@@ -54,5 +56,6 @@ public class DashboardPage {
     public void clickbtnSubMenu(String submenu) {
         WebElement choosen = choose(submenu_elements, submenu);
         choosen.click();
+        wait.until(ExpectedConditions.invisibilityOf(title_app));
     }
 }

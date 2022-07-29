@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="19.418">
-    <testcase classname="CRUD Reagent" name="create new reagent" time="18.897">
-        <failure message="The scenario has pending or undefined step(s)" type="io.cucumber.java.PendingException"><![CDATA[Given user is navigated to website "http://localhost:5050"..................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="89.663">
+    <testcase classname="login feature" name="login will success with valid credentials" time="33.134">
+        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050/".................passed
 Then user is on "Login" page................................................passed
 When user enters username as "admin"........................................passed
 And user enters password as "admin".........................................passed
 And user clicks on "SignIn" button..........................................passed
 Then user is navigated to "Dashboard" page..................................passed
-When user clicks on menu "Reagent"..........................................passed
-And user clicks on sub-menu "Library".......................................passed
-Then user is navigated to "Reagent Library" page............................passed
-When user clicks on "Create Reagent" button.................................passed
-Then user is redirected into "Create Reagent" page..........................pending
-When user type reagent "name" as "Reagent 1"................................skipped
-Then "Reagent 1" is typed on "name" textbox.................................skipped
-When user select "Antibiotic" on "type".....................................skipped
-Then "Antibiotic" is selected on "type".....................................skipped
-When user type reagent "note" as "Create Reagent 1 with Antibiotic".........skipped
-Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox..........skipped
-When user clicks on "Save" button...........................................skipped
-Then new reagent item is created with notification "Success"................skipped
-And There is no new "culture reagent" created...............................skipped
-]]></failure>
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials" time="26.419">
+        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050/".................passed
+Then user is on "Login" page................................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "adminadmin"....................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error notification "Incorrect Username or password" is displayed.......passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 2" time="25.09">
+        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050/".................passed
+Then user is on "Login" page................................................passed
+When user enters username as "admin"........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error validation "Please input your password!" is display..............passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 3" time="4.47">
+        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050/".................passed
+Then user is on "Login" page................................................passed
+When user enters password as "admin"........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error validation "Please input your username!" is display..............passed
+]]></system-out>
     </testcase>
 </testsuite>

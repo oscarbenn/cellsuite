@@ -14,16 +14,17 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObject.CreateReagentPage;
 import pageObject.DashboardPage;
 import pageObject.LoginPage;
 import pageObject.ReagentLibraryPage;
 
 public class Steps {
     WebDriver driver = null;
-    
     LoginPage loginPage;
     DashboardPage dashboardPage;
     ReagentLibraryPage reagentLibraryPage;
+    CreateReagentPage createReagentPage;
 
     @Before
     public void browserSetup(){
@@ -38,8 +39,8 @@ public class Steps {
         // driver.manage().window().setSize(window);
 
         driver.manage().deleteAllCookies();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
     }
 
     @After
@@ -55,7 +56,7 @@ public class Steps {
     }
     @Then("user is on {string} page")
     public void user_is_on_page(String page) {
-        if (page=="Login") {
+        if (page.equalsIgnoreCase("Login")) {
             assertTrue(loginPage.checkLoginButton());
         }
     }
@@ -63,21 +64,21 @@ public class Steps {
     public void user_enters_username_as(String username) {
         loginPage.enterUsername(username);
     }
-    @When("user enters password as {string}")
+    @And("user enters password as {string}")
     public void user_enters_password_as(String password) {
         loginPage.enterPassword(password);
     }
-    @When("user clicks on {string} button")
+    @And("user clicks on {string} button")
     public void user_clicks_on_button(String button) {
-        if (button=="SignIn") {
+        if (button.equalsIgnoreCase("SignIn")) {
             loginPage.clickButtonLogin();
             dashboardPage = new DashboardPage(driver);
-        }
-        if (button=="Create Reagent") {
+        } else if (button.equalsIgnoreCase("Create Reagent")) {
             reagentLibraryPage.clickButtonCreate();
-        }
-        if (button=="Save") {
-            
+            createReagentPage = new CreateReagentPage(driver);
+        } else if (button=="Save") {
+            createReagentPage.clickbtnsave();
+            reagentLibraryPage = new ReagentLibraryPage(driver);
         }
     }
     @Then("user is navigated to {string} page")
@@ -100,7 +101,7 @@ public class Steps {
 
     @When("user clicks on menu {string}")
     public void user_clicks_on_menu(String menu) {
-        dashboardPage = new DashboardPage(driver);
+        //dashboardPage = new DashboardPage(driver);
         dashboardPage.clickbtnMenu(menu);
     }
     @When("user clicks on sub-menu {string}")
@@ -109,38 +110,46 @@ public class Steps {
         reagentLibraryPage = new ReagentLibraryPage(driver);
     }
     @Then("user is redirected into {string} page")
-    public void user_is_redirected_into_page(String string) {
-        
+    public void user_is_redirected_into_page(String page) {
+        if (page.equalsIgnoreCase("Create Reagent")) {
+            assertEquals(page, createReagentPage.gettitleapp());
+        }
     }
     @When("user type reagent {string} as {string}")
-    public void user_type_reagent_as(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_type_reagent_as(String textbox, String fill) {
+        if (textbox.equalsIgnoreCase("name")) {
+            createReagentPage.entersName(fill);
+        } else if (textbox.equalsIgnoreCase("note")) {
+            
+        }
     }
     @Then("{string} is typed on {string} textbox")
-    public void is_typed_on_textbox(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void is_typed_on_textbox(String fill, String textbox) {
+        if (textbox.equalsIgnoreCase("name")) {
+            assertEquals(fill, createReagentPage.getNameValue()); 
+        } else if (textbox.equalsIgnoreCase("note")) {
+            
+        }
     }
     @When("user select {string} on {string}")
-    public void user_select_on(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_select_on(String opsi, String selectbox) {
+        if (selectbox.equalsIgnoreCase("type")) {
+            createReagentPage.chooseType(opsi);
+        }
     }
     @Then("{string} is selected on {string}")
-    public void is_selected_on(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void is_selected_on(String opsi, String selectbox) {
+        if (selectbox.equalsIgnoreCase("type")) {
+            assertEquals(opsi, createReagentPage.getTypeValue());
+        }
     }
-    @Then("new reagent item is created with notification {string}")
-    public void new_reagent_item_is_created_with_notification(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("new {string} item is created with notification {string}")
+    public void new_item_is_created_with_notification(String item, String notif) {
+        
     }
-    @Then("There is no new {string} created")
-    public void there_is_no_new_created(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("There is no new {string} item created")
+    public void there_is_no_new_item_created(String item) {
+        
     }
 
 

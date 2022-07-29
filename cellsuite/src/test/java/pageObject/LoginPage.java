@@ -2,6 +2,7 @@ package pageObject;
 
 import java.time.Duration;
 
+import org.bouncycastle.pqc.jcajce.provider.rainbow.SignatureSpi.withSha224;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,16 +27,13 @@ public class LoginPage {
         this.driver = driver;
         PageFactory.initElements(driver, LoginPage.this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.titleContains("Suite"));
     }
 
     public void enterUsername(String username) {
-        wait.until(ExpectedConditions.visibilityOf(txt_username));
         txt_username.sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        wait.until(ExpectedConditions.visibilityOf(txt_password));
         txt_password.sendKeys(password);
     }
 
