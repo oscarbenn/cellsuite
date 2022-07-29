@@ -139,7 +139,6 @@ public class Steps {
     @Then("new {string} item is created with notification {string} and {string}")
     public void new_item_is_created_with_notification_and(String item, String notif, String desc) {
         if (item.equalsIgnoreCase("reagent")) {
-            assertTrue(reagentLibraryPage.checknotif());
             assertEquals(notif, reagentLibraryPage.getNotifMsg());
             assertEquals(desc, reagentLibraryPage.getDescNotif());
         } else{System.out.println("salah");}

@@ -39,7 +39,6 @@ public class LoginPage {
 
     public void clickButtonLogin() {
         btn_login.click();
-        wait.until(ExpectedConditions.invisibilityOf(txt_username));
     }
 
     public Boolean checkLoginButton(){

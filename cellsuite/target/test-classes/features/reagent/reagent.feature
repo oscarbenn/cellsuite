@@ -17,8 +17,8 @@ Feature: CRUD Reagent
     Scenario: create new reagent
     When user clicks on "Create Reagent" button
     Then user is navigated to "Create Reagent" page
-    When user type reagent "name" as "Reagent 1"
-    Then "Reagent 1" is typed on "name" textbox
+    When user type reagent "name" as "Reagent 5"
+    Then "Reagent 5" is typed on "name" textbox
     When user select "Antibiotic" on "type" 
     Then "Antibiotic" is selected on "type"
     When user type reagent "note" as "Create Reagent 1 with Antibiotic"

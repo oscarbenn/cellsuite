@@ -1,59 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="52.77">
-    <testcase classname="CRUD Reagent" name="create new reagent" time="52.319">
-        <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class=&quot;logout-button&quot;]&quot;}&#10;  (Session info: headless chrome=103.0.5060.134)&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element&#10;Build info: version: '4.3.0', revision: 'a4995e2c09*'&#10;System info: host: 'DESKTOP-SJM9DM9', ip: '172.19.128.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Command: [d92a3e5f005adbf14828cca78219375b, findElement {using=xpath, value=//div[@class=&quot;logout-button&quot;]}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\smith\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:53552}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53552/devtoo..., se:cdpVersion: 103.0.5060.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: d92a3e5f005adbf14828cca78219375b" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Given user is navigated to website "http://localhost:5050"..................passed
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="41.015">
+    <testcase classname="CRUD Reagent" name="create new reagent" time="40.352">
+        <failure message="expected: &lt;Success&gt; but was: &lt;&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[Given user is navigated to website "http://localhost:5050"..................passed
 Then user is navigated to "login" page......................................passed
 When user enters username as "admin"........................................passed
 And user enters password as "admin".........................................passed
 And user clicks on "SignIn" button..........................................passed
-Then user is navigated to "Dashboard" page..................................failed
-When user clicks on menu "Reagent"..........................................skipped
-And user clicks on sub-menu "Library".......................................skipped
-Then user is navigated to "Reagent Library" page............................skipped
-When user clicks on "Create Reagent" button.................................skipped
-Then user is navigated to "Create Reagent" page.............................skipped
-When user type reagent "name" as "Reagent 1"................................skipped
-Then "Reagent 1" is typed on "name" textbox.................................skipped
-When user select "Antibiotic" on "type".....................................skipped
-Then "Antibiotic" is selected on "type".....................................skipped
-When user type reagent "note" as "Create Reagent 1 with Antibiotic".........skipped
-Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox..........skipped
-When user clicks on "Save" button...........................................skipped
-Then new "reagent" item is created with notification "Success" and "Reagents has been created".skipped
+Then user is navigated to "Dashboard" page..................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Library".......................................passed
+Then user is navigated to "Reagent Library" page............................passed
+When user clicks on "Create Reagent" button.................................passed
+Then user is navigated to "Create Reagent" page.............................passed
+When user type reagent "name" as "Reagent 5"................................passed
+Then "Reagent 5" is typed on "name" textbox.................................passed
+When user select "Antibiotic" on "type".....................................passed
+Then "Antibiotic" is selected on "type".....................................passed
+When user type reagent "note" as "Create Reagent 1 with Antibiotic".........passed
+Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox..........passed
+When user clicks on "Save" button...........................................passed
+Then new "reagent" item is created with notification "Success" and "Reagents has been created".failed
 And There is no new "culture reagent" item created..........................skipped
 
 StackTrace:
-org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class="logout-button"]"}
-  (Session info: headless chrome=103.0.5060.134)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.3.0', revision: 'a4995e2c09*'
-System info: host: 'DESKTOP-SJM9DM9', ip: '172.19.128.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d92a3e5f005adbf14828cca78219375b, findElement {using=xpath, value=//div[@class="logout-button"]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\smith\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:53552}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53552/devtoo..., se:cdpVersion: 103.0.5060.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: d92a3e5f005adbf14828cca78219375b
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-	at jdk.proxy2/jdk.proxy2.$Proxy25.isDisplayed(Unknown Source)
-	at pageObject.DashboardPage.checkbtnlogout(DashboardPage.java:35)
-	at stepDefinition.Steps.user_is_navigated_to_page(Steps.java:84)
-	at ✽.user is navigated to "Dashboard" page(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/reagent/reagent.feature:12)
+org.opentest4j.AssertionFailedError: expected: <Success> but was: <>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at stepDefinition.Steps.new_item_is_created_with_notification_and(Steps.java:142)
+	at ✽.new "reagent" item is created with notification "Success" and "Reagents has been created"(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/reagent/reagent.feature:27)
 ]]></failure>
     </testcase>
 </testsuite>

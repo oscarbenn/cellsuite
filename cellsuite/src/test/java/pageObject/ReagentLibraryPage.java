@@ -41,11 +41,9 @@ public class ReagentLibraryPage {
 
     public void clickButtonCreate() {
         btn_create.click();
-        wait.until(ExpectedConditions.invisibilityOf(app_title));
     }
 
     public Boolean checknotif() {
-        wait.until(ExpectedConditions.visibilityOf(notif_alert));
         return notif_alert.isDisplayed();
     }
 

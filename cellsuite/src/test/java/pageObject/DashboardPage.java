@@ -56,6 +56,5 @@ public class DashboardPage {
     public void clickbtnSubMenu(String submenu) {
         WebElement choosen = choose(submenu_elements, submenu);
         choosen.click();
-        wait.until(ExpectedConditions.invisibilityOf(title_app));
     }
 }
