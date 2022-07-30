@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ReagentLibraryPage {
+public class ReagentCulturePage {
     
     @FindBy(xpath = "//div[@class=\"ant-page-header-heading\"]/child::div")
     WebElement app_title;
@@ -32,14 +32,27 @@ public class ReagentLibraryPage {
     List<WebElement> menu_elements;
     @FindBy(xpath = "//ul[@role=\"menu\"]/li/ul/li")
     List<WebElement> submenu_elements;
+    @FindBy(xpath = "(//div[@data-testid=\"info-button\"]/parent::td/preceding-sibling::td[3])[1]")
+    WebElement new_reagentculturename;
+    @FindBy(xpath = "(//div[@data-testid=\"info-button\"]/parent::td/preceding-sibling::td[2])[1]")
+    WebElement new_reagentculturecomposition;
+    
     
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public ReagentLibraryPage(WebDriver driver){
+    public ReagentCulturePage(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver, ReagentLibraryPage.this);
+        PageFactory.initElements(driver, ReagentCulturePage.this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    public String getTopReagentCulture(){
+        return new_reagentculturename.getText();
+    }
+
+    public Boolean getCompositionOfReagentCulture(String composition) {
+        return new_reagentculturecomposition.getText().contains(composition);
     }
 
     public String getTitleofPage() {
@@ -57,11 +70,11 @@ public class ReagentLibraryPage {
     }
 
     public String getNotifMsg() {
-        return notif_alert.getText();
+        return notif.getText();
     }
 
     public Object getDescNotif() {
-        return desc_alert.getText();
+        return null;
     }
 
     public void clickbtnMenu(String menu) {
@@ -86,6 +99,5 @@ public class ReagentLibraryPage {
         WebElement choosen = choose(submenu_elements, submenu);
         choosen.click();
     }
-
-
+    
 }

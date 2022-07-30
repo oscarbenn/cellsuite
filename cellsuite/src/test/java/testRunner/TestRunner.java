@@ -11,6 +11,7 @@ import io.cucumber.junit.CucumberOptions;
     glue = {"stepDefinition"},
     // tags = "@usermanagement",
     tags = "@reagentFeature",
+    // tags = "@withCreateCultureReagent",
     monochrome = false,
     plugin = {"pretty", "html:target/htmlReport/reports.html",
                         "json:target/jsonReport/reports.json",

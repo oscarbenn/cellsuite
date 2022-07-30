@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
@@ -17,6 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pageObject.CreateReagentPage;
 import pageObject.DashboardPage;
 import pageObject.LoginPage;
+import pageObject.ReagentCulturePage;
 import pageObject.ReagentLibraryPage;
 
 public class Steps {
@@ -25,6 +27,9 @@ public class Steps {
     DashboardPage dashboardPage;
     ReagentLibraryPage reagentLibraryPage;
     CreateReagentPage createReagentPage;
+    ReagentCulturePage reagentCulturePage;
+
+    String new_reagent;
 
     @Before
     public void browserSetup(){
@@ -72,7 +77,6 @@ public class Steps {
             createReagentPage = new CreateReagentPage(driver);
         } else if (button.equalsIgnoreCase("Save")) {
             createReagentPage.clickbtnsave();
-            reagentLibraryPage = null;
             reagentLibraryPage = new ReagentLibraryPage(driver);
         } else{System.out.println("salah");}
     }
@@ -81,7 +85,7 @@ public class Steps {
         if (page.equalsIgnoreCase("Login")) {
             assertTrue(loginPage.checkLoginButton());
         }else if (page.equalsIgnoreCase("Dashboard")) {
-            assertTrue(dashboardPage.checkbtnlogout());
+            assertTrue(dashboardPage.checktitleapp());
         } else if (page.equalsIgnoreCase("Reagent Library")){
             assertEquals(page, reagentLibraryPage.getTitleofPage());
         } else if (page.equalsIgnoreCase("Create Reagent")) {
@@ -112,6 +116,7 @@ public class Steps {
     public void user_type_reagent_as(String textbox, String fill) {
         if (textbox.equalsIgnoreCase("name")) {
             createReagentPage.entersName(fill);
+            new_reagent = fill;
         } else if (textbox.equalsIgnoreCase("note")) {
             createReagentPage.entersNotes(fill);
         } else{System.out.println("salah");}
@@ -123,6 +128,17 @@ public class Steps {
         } else if (textbox.equalsIgnoreCase("note")) {
             assertEquals(fill, createReagentPage.getNotesValue());
         } else{System.out.println("salah");}
+    }
+    @When("user check {string} on checkbox")
+    public void user_check_on_checkbox(String checkbox) {
+        if (checkbox.equalsIgnoreCase("create culture reagent")) {
+            createReagentPage.checkCreateCultureReagent();            
+        }
+    }
+    @Then("checkbox {string} is checked")
+    public void checkbox_is_checked(String checkbox) {
+        if (checkbox.equalsIgnoreCase("create culture reagent")) {           
+        }
     }
     @When("user select {string} on {string}")
     public void user_select_on(String opsi, String selectbox) {
@@ -139,13 +155,33 @@ public class Steps {
     @Then("new {string} item is created with notification {string} and {string}")
     public void new_item_is_created_with_notification_and(String item, String notif, String desc) {
         if (item.equalsIgnoreCase("reagent")) {
+            reagentLibraryPage = new ReagentLibraryPage(driver);
+            assertTrue(reagentLibraryPage.checknotif());
             assertEquals(notif, reagentLibraryPage.getNotifMsg());
             assertEquals(desc, reagentLibraryPage.getDescNotif());
         } else{System.out.println("salah");}
     }
     @Then("There is no new {string} item created")
     public void there_is_no_new_item_created(String item) {
-        
+        if (item.equalsIgnoreCase("culture reagent")) {
+            reagentLibraryPage.clickbtnMenu("Reagent");
+            reagentLibraryPage.clickbtnSubMenu("Culture Reagent");
+            reagentCulturePage = new ReagentCulturePage(driver);
+            assertNotEquals(new_reagent, reagentCulturePage.getTopReagentCulture()); 
+
+        }
+    }
+
+    
+    @Then("There is new {string} item created with {string} composition")
+    public void there_is_new_item_created_with_composition(String item, String composition) {
+        if (item.equalsIgnoreCase("culture reagent")) {
+            reagentLibraryPage.clickbtnMenu("Reagent");
+            reagentLibraryPage.clickbtnSubMenu("Culture Reagent");
+            reagentCulturePage = new ReagentCulturePage(driver);
+            assertEquals(new_reagent, reagentCulturePage.getTopReagentCulture());
+            assertTrue(reagentCulturePage.getCompositionOfReagentCulture(composition)); 
+        }
     }
 
 

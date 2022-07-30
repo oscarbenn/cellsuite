@@ -30,9 +30,9 @@ public class DashboardPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public Boolean checkbtnlogout(){
+    public Boolean checktitleapp(){
         wait.until(ExpectedConditions.visibilityOf(title_app));
-        return btn_logout.isDisplayed();
+        return title_app.isDisplayed();
     }
 
     public void clickbtnMenu(String menu) {

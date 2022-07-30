@@ -26,6 +26,8 @@ public class CreateReagentPage {
     WebElement select_reagenttype;
     @FindBy(xpath = "//div[@data-testid=\"reagent-type\"]/child::div/child::span[2]")
     WebElement inputselect_reagenttype;
+    @FindBy(xpath = "//input[@data-testid=\"create-culture-reagent\"]/parent::span")
+    WebElement chkbox_createCultureReagent;
 
     @FindBy(xpath = "//div[@label=\"Other\"]/parent::div/child::div")
     List<WebElement> opsi_reagenttype;
@@ -45,7 +47,6 @@ public class CreateReagentPage {
 
     public void clickbtnsave() {
         btn_save.click();
-        wait.until(ExpectedConditions.invisibilityOf(btn_close));
     }
 
     public String gettitleapp() {
@@ -80,6 +81,15 @@ public class CreateReagentPage {
 
     public String getNotesValue() {
         return text_notes.getText();
+    }
+
+    public void checkCreateCultureReagent(){
+        check_culture.click();
+    }
+
+    public Boolean createCultureReagentisChecked(){
+        //return check_culture.getAttribute("class");
+        return check_culture.getAttribute("class").equalsIgnoreCase("ant-checkbox ant-checkbox-checked");
     }
 
     private WebElement choose(List<WebElement> elements, String elementText) {
