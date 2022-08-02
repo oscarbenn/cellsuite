@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="36.255">
-    <testcase classname="CRUD Reagent" name="create new reagent" time="22.477">
-        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050"..................passed
+<testsuite errors="0" failures="2" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="44.721">
+    <testcase classname="Create new Reagent" name="create new reagent item" time="14.282">
+        <failure message="expected:&lt;[Success]&gt; but was:&lt;[One or more validation errors occurred.]&gt;" type="org.junit.ComparisonFailure"><![CDATA[Given user is navigated to website..........................................passed
 Then user is navigated to "login" page......................................passed
 When user enters username as "admin"........................................passed
 And user enters password as "admin".........................................passed
@@ -19,12 +19,19 @@ Then "Antibiotic" is selected on "type".....................................pass
 When user type reagent "note" as "Create Reagent 1 with Antibiotic".........passed
 Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox..........passed
 When user clicks on "Save" button...........................................passed
-Then new "reagent" item is created with notification "Success" and "Reagent has been created".passed
-And There is no new "culture reagent" item created..........................passed
-]]></system-out>
+Then new "reagent" item is created with notification "Success" and "Reagent has been created".failed
+And There is no new "culture reagent" item created..........................skipped
+
+StackTrace:
+org.junit.ComparisonFailure: expected:<[Success]> but was:<[One or more validation errors occurred.]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepDefinition.Steps.new_item_is_created_with_notification_and(Steps.java:162)
+	at ✽.new "reagent" item is created with notification "Success" and "Reagent has been created"(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Create%20Reagent%20Library/CC-1080%20Create%20new%20Reagent.feature:27)
+]]></failure>
     </testcase>
-    <testcase classname="CRUD Reagent" name="create new reagent with create culture reagent" time="13.134">
-        <system-out><![CDATA[Given user is navigated to website "http://localhost:5050"..................passed
+    <testcase classname="CC-1103 Create new Reagent with new Culture Reagent" name="Create new Reagent item" time="12.942">
+        <failure message="expected:&lt;[Success]&gt; but was:&lt;[One or more validation errors occurred.]&gt;" type="org.junit.ComparisonFailure"><![CDATA[Given user is navigated to website..........................................passed
 Then user is navigated to "login" page......................................passed
 When user enters username as "admin"........................................passed
 And user enters password as "admin".........................................passed
@@ -44,8 +51,49 @@ Then checkbox "create culture reagent" is checked...........................pass
 When user type reagent "note" as "Create Reagent 1 with Antibiotic".........passed
 Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox..........passed
 When user clicks on "Save" button...........................................passed
-Then new "reagent" item is created with notification "Success" and "Reagent has been created".passed
-And There is new "culture reagent" item created with "100%" composition.....passed
+Then new "reagent" item is created with notification "Success" and "Reagent has been created".failed
+And There is new "culture reagent" item created with "100%" composition.....skipped
+
+StackTrace:
+org.junit.ComparisonFailure: expected:<[Success]> but was:<[One or more validation errors occurred.]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepDefinition.Steps.new_item_is_created_with_notification_and(Steps.java:162)
+	at ✽.new "reagent" item is created with notification "Success" and "Reagent has been created"(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Create%20Reagent%20Library/CC-1103%20Create%20new%20Reagent%20with%20new%20Culture%20Reagent.feature:29)
+]]></failure>
+    </testcase>
+    <testcase classname="login feature" name="login will success with valid credentials" time="4.458">
+        <system-out><![CDATA[Given user is navigated to website..........................................passed
+Then user is navigated to "Login" page......................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "admin".........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then user is navigated to "Dashboard" page..................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials" time="4.149">
+        <system-out><![CDATA[Given user is navigated to website..........................................passed
+Then user is navigated to "Login" page......................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "adminadmin"....................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error notification "Incorrect Username or password" is displayed.......passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 2" time="4.133">
+        <system-out><![CDATA[Given user is navigated to website..........................................passed
+Then user is navigated to "Login" page......................................passed
+When user enters username as "admin"........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error validation "Please input your password!" is display..............passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 3" time="4.172">
+        <system-out><![CDATA[Given user is navigated to website..........................................passed
+Then user is navigated to "Login" page......................................passed
+When user enters password as "admin"........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then error validation "Please input your username!" is display..............passed
 ]]></system-out>
     </testcase>
 </testsuite>

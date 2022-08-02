@@ -3,6 +3,7 @@ package pageObject;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,9 +33,16 @@ public class ReagentLibraryPage {
     List<WebElement> menu_elements;
     @FindBy(xpath = "//ul[@role=\"menu\"]/li/ul/li")
     List<WebElement> submenu_elements;
+
+    @FindBy(xpath = "//table/tbody/tr")
+    List<WebElement> barisTable;
+    @FindBy(xpath = "//table/tbody/tr[1]/td")
+    List<WebElement> kolomTable;
     
     protected WebDriver driver;
     protected WebDriverWait wait;
+    private By dataTable;
+    private WebElement dataTableElement;
 
     public ReagentLibraryPage(WebDriver driver){
         this.driver = driver;
@@ -86,6 +94,17 @@ public class ReagentLibraryPage {
         WebElement choosen = choose(submenu_elements, submenu);
         choosen.click();
     }
+
+    // public WebElement getDataTable(String barisT, String kolomT){
+    //     String i,j;
+    //     for (int baris = 1; baris <= barisTable.size(); baris++) {
+    //         for (int kolom = 1; kolom <= kolomTable.size(); kolom++) {
+    //             dataTable = new By.ByXPath("//table/tbody/tr["+baris+"]/td["+kolom+"]");
+    //             return dataTableElement.findElement(dataTable);
+    //         }
+    //     }
+        
+    // }
 
 
 }

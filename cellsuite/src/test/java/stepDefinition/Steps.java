@@ -1,8 +1,10 @@
 package stepDefinition;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.*;
+
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertNotEquals;
+// import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 
@@ -54,9 +56,9 @@ public class Steps {
         driver.quit();
     }
 
-    @Given("user is navigated to website {string}")
-    public void user_is_navigated_to_website(String url) {
-        driver.get(url);
+    @Given("user is navigated to website")
+    public void user_is_navigated_to_website() {
+        driver.get("http://localhost:5050");
         loginPage = new LoginPage(driver);
     }
     @When("user enters username as {string}")

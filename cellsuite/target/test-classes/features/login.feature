@@ -4,7 +4,7 @@ Feature: login feature
     Check login functionality
 
     Background: user is navigated to login page
-        Given user is navigated to website "http://localhost:5050/"
+        Given user is navigated to website
         Then user is navigated to "Login" page
 
     @loginsuccess

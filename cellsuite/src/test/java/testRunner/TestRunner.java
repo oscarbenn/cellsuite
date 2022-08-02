@@ -10,13 +10,13 @@ import io.cucumber.junit.CucumberOptions;
     features = "src/test/resources/features/",
     glue = {"stepDefinition"},
     // tags = "@usermanagement",
-    tags = "@reagentFeature",
-    // tags = "@withCreateCultureReagent",
+    // tags = "@CC-1080_Create_new_Reagent",
+    // tags = "@CC-1103_Create_new_Reagent_with_new_Culture_Reagent",
     monochrome = false,
     plugin = {"pretty", "html:target/htmlReport/reports.html",
                         "json:target/jsonReport/reports.json",
                         "junit:target/junitReport/reports.xml"}
 )
 class TestRunner {
-    
+
 }
