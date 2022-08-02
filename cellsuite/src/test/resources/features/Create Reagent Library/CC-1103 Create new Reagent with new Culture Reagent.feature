@@ -1,5 +1,5 @@
-@CC-1103_Create_new_Reagent_with_new_Culture_Reagent
-Feature: CC-1103 Create new Reagent with new Culture Reagent
+@CC-1103_Create_new_reagent_with_new_culture_reagent
+Feature: CC-1103:Create new reagent with new culture reagent
 
     This test case is to make sure if user could create new Reagent item and auto create Reagent Culture item.
 
@@ -17,8 +17,8 @@ Feature: CC-1103 Create new Reagent with new Culture Reagent
     Scenario: Create new Reagent item
     When user clicks on "Create Reagent" button
     Then user is navigated to "Create Reagent" page
-    When user type reagent "name" as "Reagent 2"
-    Then "Reagent 2" is typed on "name" textbox
+    When user type reagent "name" as "Reagent 33"
+    Then "Reagent 33" is typed on "name" textbox
     When user select "Antibiotic" on "type" 
     Then "Antibiotic" is selected on "type"
     When user check "create culture reagent" on checkbox

@@ -306,8 +306,8 @@
 <error line="5" column="1" severity="error" message="Wrong order for &apos;io.cucumber.junit.Cucumber&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 <error line="8" column="1" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
 </file>
-<file name="C:\Users\smith\OneDrive\Documents\INTERN\Cell\cellsuite\cellsuite\src\test\resources\cucumber.properties">
+<file name="c:\Users\smith\OneDrive\Documents\INTERN\Cell\cellsuite\cellsuite\src\test\resources\cucumber.properties">
 </file>
-<file name="C:\Users\smith\OneDrive\Documents\INTERN\Cell\cellsuite\cellsuite\src\test\resources\junit-platform.properties">
+<file name="c:\Users\smith\OneDrive\Documents\INTERN\Cell\cellsuite\cellsuite\src\test\resources\junit-platform.properties">
 </file>
 </checkstyle>

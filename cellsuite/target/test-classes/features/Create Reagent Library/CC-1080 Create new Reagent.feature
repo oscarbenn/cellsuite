@@ -1,5 +1,5 @@
-@CC-1080_Create_new_Reagent
-Feature: Create new Reagent
+@CC-1080_Create_new_reagent
+Feature: CC-1080:Create new Reagent
 
     This test case is to make sure the user could create new Reagent item
 
@@ -17,8 +17,8 @@ Feature: Create new Reagent
     Scenario: create new reagent item
     When user clicks on "Create Reagent" button
     Then user is navigated to "Create Reagent" page
-    When user type reagent "name" as "Reagent 1"
-    Then "Reagent 1" is typed on "name" textbox
+    When user type reagent "name" as "Reagent 11"
+    Then "Reagent 11" is typed on "name" textbox
     When user select "Antibiotic" on "type" 
     Then "Antibiotic" is selected on "type"
     When user type reagent "note" as "Create Reagent 1 with Antibiotic"
