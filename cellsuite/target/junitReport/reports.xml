@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="40.006">
+    <testcase classname="CC-1130:Edit multiple reagent item" name="Select and Edit some reagent item" time="39.583">
+        <system-out><![CDATA[Given user is navigated to website..........................................passed
+Then user is navigated to "login" page......................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "admin".........................................passed
+And user clicks on "SignIn" button..........................................passed
+Then user is navigated to "Dashboard" page..................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Library".......................................passed
+Then user is navigated to "Reagent Library" page............................passed
+And "Reagent" items is already exist........................................passed
+When user select an "reagent" item "Reagent 44" by check the checkbox.......passed
+Then "reagent" checkbox "Reagent 44" item is checked........................passed
+When user select an "reagent" item "Reagent 11" by check the checkbox.......passed
+Then "reagent" checkbox "Reagent 11" item is checked........................passed
+And button "edit" "reagent" is enabled......................................passed
+When user clicks on "edit reagent" button...................................passed
+Then user is navigated to "Edit Reagent" page...............................passed
+When user change "name" with "Reagent 4.0"..................................passed
+And user change "note" with "Reagent 4.0 with Antibiotic"...................passed
+And user clicks on "save reagent" button....................................passed
+Then modal "save" confirmation is displayed.................................passed
+When user clicks on "Ok" button.............................................passed
+Then the "reagent" item is "updated" with notification "Success" and "Reagent has been updated".passed
+When user clicks on "arrow Next" button.....................................passed
+Then user is navigated to "Edit Reagent" page...............................passed
+When user change "name" with "Reagent 1.0"..................................passed
+And user change "note" with "Reagent 1.0 with Antibiotic"...................passed
+And user clicks on "save reagent" button....................................passed
+Then modal "save" confirmation is displayed.................................passed
+When user clicks on "Ok" button.............................................passed
+Then the "reagent" item is "updated" with notification "Success" and "Reagent has been updated".passed
+When user clicks on "close" button..........................................passed
+And user is navigated to "Reagent Library" page.............................passed
+]]></system-out>
+    </testcase>
+</testsuite>

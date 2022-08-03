@@ -38,11 +38,9 @@ public class ReagentLibraryPage {
     List<WebElement> barisTable;
     @FindBy(xpath = "//table/tbody/tr[1]/td")
     List<WebElement> kolomTable;
-    
+
     protected WebDriver driver;
     protected WebDriverWait wait;
-    private By dataTable;
-    private WebElement dataTableElement;
 
     public ReagentLibraryPage(WebDriver driver){
         this.driver = driver;
@@ -68,43 +66,64 @@ public class ReagentLibraryPage {
         return notif_alert.getText();
     }
 
-    public Object getDescNotif() {
+    public String getDescNotif() {
         return desc_alert.getText();
     }
 
     public void clickbtnMenu(String menu) {
-        WebElement choosen = choose(menu_elements, menu);
+        WebElement choosen = Function.choose(menu_elements, menu);
         choosen.click();
         wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
     }
 
-    private WebElement choose(List<WebElement> elements, String elementText) {
-        WebElement choosenElement = null;
-        for (int i = 0; i < elements.size(); i++) {
-            WebElement element = elements.get(i);
-            String label = element.getText();
-            if (label.equals(elementText)) {
-                choosenElement = element;
-            }
-        }
-        return choosenElement;
-    }
-
     public void clickbtnSubMenu(String submenu) {
-        WebElement choosen = choose(submenu_elements, submenu);
+        WebElement choosen = Function.choose(submenu_elements, submenu);
         choosen.click();
     }
 
-    // public WebElement getDataTable(String barisT, String kolomT){
-    //     String i,j;
-    //     for (int baris = 1; baris <= barisTable.size(); baris++) {
-    //         for (int kolom = 1; kolom <= kolomTable.size(); kolom++) {
-    //             dataTable = new By.ByXPath("//table/tbody/tr["+baris+"]/td["+kolom+"]");
-    //             return dataTableElement.findElement(dataTable);
-    //         }
-    //     }
+    public boolean checkItemIsExist() {
+        return (barisTable.size()>1);
+    }
+
+    public void selectItemByName(String itemName) {
+        for (int i = 1; i < barisTable.size(); i++) {
+            WebElement name_row = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[2]"));
+            String label = name_row.getText();
+            System.out.println(label);
+            if (label.equals(itemName)) {
+                WebElement choosen = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[1]"));
+                choosen.click();
+                break;
+            } 
+        }
+    }
+
+    public Boolean checkItemIsSelected(String itemName) {
+        for (int i = 1; i < barisTable.size(); i++) {
+            WebElement name_row = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[2]"));
+            String label = name_row.getText();
+            System.out.println(label);
+            if (label.equals(itemName)) {
+                WebElement choosen = driver.findElement(By.xpath("//table/tbody/tr["+i+"]"));
+                //choosen.getClass().equals(class="ant-table-row ant-table-row-level-0 ant-table-row-selected");
+                String classs = choosen.getAttribute("class");
+                System.out.println(classs);
+                return classs.contains("selected");
+            }
+        }
+        return null;
+    }
+
+    public Boolean checkEditButtonIsEnabled() {
+        wait.until(ExpectedConditions.elementToBeClickable(btn_edit));
+        return btn_edit.isEnabled();
+    }
+
+    public void clickButtonEdit() {
+        btn_edit.click();
+    }
+
+    public void clickButtonSave() {
         
-    // }
-
-
+    }
 }

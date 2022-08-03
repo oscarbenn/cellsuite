@@ -19,6 +19,7 @@ import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pageObject.CreateReagentPage;
 import pageObject.DashboardPage;
+import pageObject.EditReagentPage;
 import pageObject.LoginPage;
 import pageObject.ReagentCulturePage;
 import pageObject.ReagentLibraryPage;
@@ -30,8 +31,11 @@ public class Steps {
     ReagentLibraryPage reagentLibraryPage;
     CreateReagentPage createReagentPage;
     ReagentCulturePage reagentCulturePage;
+    EditReagentPage editReagentPage;
 
     String new_reagent;
+    String url = "http://localhost:5050";
+    
 
     @Before
     public void browserSetup(){
@@ -58,7 +62,7 @@ public class Steps {
 
     @Given("user is navigated to website")
     public void user_is_navigated_to_website() {
-        driver.get("http://localhost:5050");
+        driver.get(url);
         loginPage = new LoginPage(driver);
     }
     @When("user enters username as {string}")
@@ -80,7 +84,20 @@ public class Steps {
         } else if (button.equalsIgnoreCase("Save")) {
             createReagentPage.clickbtnsave();
             reagentLibraryPage = new ReagentLibraryPage(driver);
-        } else{System.out.println("salah");}
+        } else if (button.equalsIgnoreCase("edit reagent")) {
+            reagentLibraryPage.clickButtonEdit();
+            editReagentPage = new EditReagentPage(driver);
+        } else if (button.equalsIgnoreCase("save reagent")) {
+            editReagentPage.clickButtonSave();
+        } else if (button.equalsIgnoreCase("Ok")){
+            editReagentPage.clickButtonOk();
+            //reagentLibraryPage = new ReagentLibraryPage(driver);
+        } else if (button.equalsIgnoreCase("arrow Next")){
+            editReagentPage.clickButtonNext();
+        } else if (button.equalsIgnoreCase("close")){
+            editReagentPage.clickButtonClose();
+        }
+        else{System.out.println("salah");}
     }
     @Then("user is navigated to {string} page")
     public void user_is_navigated_to_page(String page) {
@@ -89,10 +106,13 @@ public class Steps {
         }else if (page.equalsIgnoreCase("Dashboard")) {
             assertTrue(dashboardPage.checktitleapp());
         } else if (page.equalsIgnoreCase("Reagent Library")){
+            reagentLibraryPage = new ReagentLibraryPage(driver);
             assertEquals(page, reagentLibraryPage.getTitleofPage());
         } else if (page.equalsIgnoreCase("Create Reagent")) {
             assertEquals(page, createReagentPage.gettitleapp());
-        } else{System.out.println("salah");}
+        } else if (page.equalsIgnoreCase("Edit Reagent")) {
+            assertEquals(page, editReagentPage.getTitleApp());
+        }else{System.out.println("salah");}
     }
     @Then("error notification {string} is displayed")
     public void error_notification_is_display(String errorExpected) {
@@ -154,13 +174,15 @@ public class Steps {
             assertEquals(opsi, createReagentPage.getTypeValue());
         } else{System.out.println("salah");}
     }
-    @Then("new {string} item is created with notification {string} and {string}")
-    public void new_item_is_created_with_notification_and(String item, String notif, String desc) {
+    @Then("the {string} item is {string} with notification {string} and {string}")
+    public void new_item_is_with_notification_and(String item,String action, String notif, String desc) {
         if (item.equalsIgnoreCase("reagent")) {
-            reagentLibraryPage = new ReagentLibraryPage(driver);
-            assertTrue(reagentLibraryPage.checknotif());
-            assertEquals(notif, reagentLibraryPage.getNotifMsg());
-            assertEquals(desc, reagentLibraryPage.getDescNotif());
+            if (action.equalsIgnoreCase("created") || action.equalsIgnoreCase("updated")) {
+                reagentLibraryPage = new ReagentLibraryPage(driver);
+                assertTrue(reagentLibraryPage.checknotif());
+                assertEquals(notif, reagentLibraryPage.getNotifMsg());
+                assertEquals(desc, reagentLibraryPage.getDescNotif());
+            }             
         } else{System.out.println("salah");}
     }
     @Then("There is no new {string} item created")
@@ -174,7 +196,6 @@ public class Steps {
         }
     }
 
-    
     @Then("There is new {string} item created with {string} composition")
     public void there_is_new_item_created_with_composition(String item, String composition) {
         if (item.equalsIgnoreCase("culture reagent")) {
@@ -186,5 +207,47 @@ public class Steps {
         }
     }
 
+    @Then("{string} items is already exist")
+    public void items_is_already_exist(String itemTable) {
+        if (itemTable.equalsIgnoreCase("Reagent")) {
+            assertTrue(reagentLibraryPage.checkItemIsExist());
+        }
+    }
+    @When("user select an {string} item {string} by check the checkbox")
+    public void user_select_an_item_by_check_the_checkbox(String item, String itemName) {
+        if (item.equalsIgnoreCase("reagent")) {
+            reagentLibraryPage.selectItemByName(itemName);
+        }
+    }
+    @Then("{string} checkbox {string} item is checked")
+    public void checkbox_item_is_checked(String item, String itemName) {
+        if (item.equalsIgnoreCase("reagent")) {
+            assertTrue(reagentLibraryPage.checkItemIsSelected(itemName));
+        }
+    }
+    @Then("button {string} {string} is enabled")
+    public void button_is_enabled(String button, String item) {
+        if (item.equalsIgnoreCase("reagent") && button.equalsIgnoreCase("edit")) {
+            assertTrue(reagentLibraryPage.checkEditButtonIsEnabled()); 
+        }
+    }
+    @When("user change {string} with {string}")
+    public void user_change_with(String textbox, String fill) {
+        if (textbox.equalsIgnoreCase("name")) {
+            editReagentPage.changeNameWith(fill);
+        } else if (textbox.equalsIgnoreCase("note")) {
+            editReagentPage.changeNoteWith(fill);
+        }
+    }
+    @Then("modal {string} confirmation is displayed")
+    public void modal_confirmation_is_displayed(String modal) {
+        if (modal.equalsIgnoreCase("save")) {
+            assertTrue(editReagentPage.checkModal());
+        }
+    }
+    @Then("reagent is updated and saved with name {string} and note {string}")
+    public void reagent_is_updated_and_saved_with_name_and_note(String name, String notes) {
+        
+    }
 
 }

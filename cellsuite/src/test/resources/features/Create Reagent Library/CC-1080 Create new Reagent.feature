@@ -1,5 +1,5 @@
 @CC-1080_Create_new_reagent
-Feature: CC-1080:Create new Reagent
+Feature: CC-1080:Create new reagent
 
     This test case is to make sure the user could create new Reagent item
 
@@ -17,12 +17,12 @@ Feature: CC-1080:Create new Reagent
     Scenario: create new reagent item
     When user clicks on "Create Reagent" button
     Then user is navigated to "Create Reagent" page
-    When user type reagent "name" as "Reagent 11"
-    Then "Reagent 11" is typed on "name" textbox
+    When user type reagent "name" as "Reagent 22"
+    Then "Reagent 22" is typed on "name" textbox
     When user select "Antibiotic" on "type" 
     Then "Antibiotic" is selected on "type"
     When user type reagent "note" as "Create Reagent 1 with Antibiotic"
     Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox
     When user clicks on "Save" button
-    Then new "reagent" item is created with notification "Success" and "Reagent has been created"
+    Then the "reagent" item is "created" with notification "Success" and "Reagent has been created"
     And There is no new "culture reagent" item created

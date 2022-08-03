@@ -78,25 +78,13 @@ public class ReagentCulturePage {
     }
 
     public void clickbtnMenu(String menu) {
-        WebElement choosen = choose(menu_elements, menu);
+        WebElement choosen = Function.choose(menu_elements, menu);
         choosen.click();
         wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
     }
 
-    private WebElement choose(List<WebElement> elements, String elementText) {
-        WebElement choosenElement = null;
-        for (int i = 0; i < elements.size(); i++) {
-            WebElement element = elements.get(i);
-            String label = element.getText();
-            if (label.equals(elementText)) {
-                choosenElement = element;
-            }
-        }
-        return choosenElement;
-    }
-
     public void clickbtnSubMenu(String submenu) {
-        WebElement choosen = choose(submenu_elements, submenu);
+        WebElement choosen = Function.choose(submenu_elements, submenu);
         choosen.click();
     }
     

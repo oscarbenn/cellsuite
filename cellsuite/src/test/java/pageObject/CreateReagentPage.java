@@ -3,7 +3,6 @@ package pageObject;
 import java.time.Duration;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,7 +55,6 @@ public class CreateReagentPage {
 
     public void entersName(String fill) {
         txt_reagentname.sendKeys(fill);
-        txt_reagentname.sendKeys(Keys.ESCAPE);
     }
 
     public String getNameValue() {
@@ -66,7 +64,7 @@ public class CreateReagentPage {
     public void chooseType(String opsi) {
         select_reagenttype.click();
         wait.until(ExpectedConditions.visibilityOfAllElements(opsi_reagenttype));
-        WebElement choosen = choose(opsi_reagenttype, opsi);
+        WebElement choosen = Function.choose(opsi_reagenttype, opsi);
         choosen.click();
         wait.until(ExpectedConditions.attributeToBe(inputselect_reagenttype, "title", opsi));
     }
@@ -88,20 +86,6 @@ public class CreateReagentPage {
     }
 
     public Boolean createCultureReagentisChecked(){
-        //return check_culture.getAttribute("class");
         return check_culture.getAttribute("class").equalsIgnoreCase("ant-checkbox ant-checkbox-checked");
     }
-
-    private WebElement choose(List<WebElement> elements, String elementText) {
-        WebElement choosenElement = null;
-        for (int i = 0; i < elements.size(); i++) {
-            WebElement element = elements.get(i);
-            String label = element.getText();
-            if (label.equals(elementText)) {
-                choosenElement = element;
-            }
-        }
-        return choosenElement;
-    }
-
 }

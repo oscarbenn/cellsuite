@@ -17,8 +17,8 @@ Feature: CC-1103:Create new reagent with new culture reagent
     Scenario: Create new Reagent item
     When user clicks on "Create Reagent" button
     Then user is navigated to "Create Reagent" page
-    When user type reagent "name" as "Reagent 33"
-    Then "Reagent 33" is typed on "name" textbox
+    When user type reagent "name" as "Reagent 44"
+    Then "Reagent 44" is typed on "name" textbox
     When user select "Antibiotic" on "type" 
     Then "Antibiotic" is selected on "type"
     When user check "create culture reagent" on checkbox
@@ -26,7 +26,7 @@ Feature: CC-1103:Create new reagent with new culture reagent
     When user type reagent "note" as "Create Reagent 1 with Antibiotic"
     Then "Create Reagent 1 with Antibiotic" is typed on "note" textbox
     When user clicks on "Save" button
-    Then new "reagent" item is created with notification "Success" and "Reagent has been created"
+    Then the "reagent" item is "created" with notification "Success" and "Reagent has been created"
     And There is new "culture reagent" item created with "100%" composition
 
 
