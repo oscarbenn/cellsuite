@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import factory.Function;
+
 public class DashboardPage {
     
     @FindBy(xpath = "//span[@class='app-title']")
@@ -30,19 +32,19 @@ public class DashboardPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public Boolean checktitleapp(){
-        wait.until(ExpectedConditions.visibilityOf(title_app));
-        return title_app.isDisplayed();
-    }
-
     public void clickbtnMenu(String menu) {
         WebElement choosen = Function.choose(menu_elements, menu);
         choosen.click();
-        wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
     }
 
     public void clickbtnSubMenu(String submenu) {
+        wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
         WebElement choosen = Function.choose(submenu_elements, submenu);
         choosen.click();
+    }
+
+    public String getTitleApp() {
+        wait.until(ExpectedConditions.visibilityOf(btn_logout));
+        return title_app.getText();
     }
 }

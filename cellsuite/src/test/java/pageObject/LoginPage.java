@@ -54,4 +54,10 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(err_massage));
         return err_massage.getText();
     }
+
+    public void doLogin(String username, String password) {
+        txt_username.sendKeys(username);
+        txt_password.sendKeys(password);
+        btn_login.click();
+    }
 }

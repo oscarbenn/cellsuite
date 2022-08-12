@@ -1,6 +1,6 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "cucumberautocomplete.steps": ["src/test/java/stepDefinition/*.java"],
+    "cucumberautocomplete.steps": ["src/test/java/stepDefinition/**/*.java"],
     "cucumberautocomplete.strictGherkinCompletion": true,
     "git.ignoreLimitWarning": true
 }
