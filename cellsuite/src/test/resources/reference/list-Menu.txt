@@ -1,0 +1,35 @@
+-Administrator
+-Dashboard
+-Notification
+-Reagent
+	-Library
+	-Culture Reagent
+	-Dispenser Reagent
+-Cell Line
+-Labware
+	-Library
+	-Inventory
+-Cell Method
+	-Maintain Cells
+	-Order Cell Plates
+-Instrument
+	-Refrigerator
+	-LabwareStorage
+	-Instrument Shelf
+	-Incubator
+	-Media Warmer
+	-Delidder
+	-Imager
+	-Flo i8
+	-Reagent Exchanger
+	-Fleet Manager
+-Tools
+	-Profile
+	-Schedule Viewer
+-Administration
+	-Audit
+	-Config
+	-User Management
+-Help
+	-User Manual
+	-About

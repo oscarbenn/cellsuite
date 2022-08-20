@@ -1,0 +1,23 @@
+Action:
+When user clicks on menu "Reagent" {menu}
+And user clicks on sub-menu "Library" {sub-menu}
+When user clicks on "create" button {button}
+When user select an item "Reagent 1" by check the checkbox {itemName}
+When user "change" "Reagent 3.0" in "name" textbox {type/change, fill, input}
+When user clicks on "OK" button in modal {OK/Cancel}
+
+
+Expected:
+Then user is navigated to "Create Reagent" page {page-header}
+And notification "Success" and "Reagent has been created" is displayed {notif,desc}
+And there is "new" item "Reagent 2" created in table {new/no new, itemName}
+And "Reagent 2" items is "already" exist {itemName, already/not}
+Then item "Reagent 1" is checked {itemName}
+And icon "delete" is enabled in page {icon}
+Then modal "Delete reagents" confirmation is displayed {modalTitle}
+And item "Reagent 3" change to be "Reagent 3.0"
+
+
+
+
+

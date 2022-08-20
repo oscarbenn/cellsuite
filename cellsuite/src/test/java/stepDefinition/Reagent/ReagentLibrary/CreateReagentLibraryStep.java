@@ -1,14 +1,13 @@
 package stepDefinition.Reagent.ReagentLibrary;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
-import pageObject.reagent.CreateReagentLibraryPage;
+import pageObject.reagent.ReagentLibrary.CreateReagentLibraryPage;
 
 public class CreateReagentLibraryStep {
     
@@ -31,7 +30,7 @@ public class CreateReagentLibraryStep {
         }
     }
     @Then("all fields in Create Reagent page is filled with this data")
-    public void all_fields_in_create_reagent_page_is_filled_with_this_data(io.cucumber.datatable.DataTable dataTable) {
+    public void all_fields_in_create_reagent_page_is_filled_with_this_data(DataTable dataTable) {
         List<String> data = dataTable.row(0);
         List<String> newdata = dataTable.row(1);
         for (int i = 0; i < data.size(); i++) {
@@ -44,19 +43,6 @@ public class CreateReagentLibraryStep {
             } else if (inputName.equalsIgnoreCase("note")) {
                 assertEquals(inputFill, createReagentPage.getNotesValue());
             }
-        }
-    }
-
-    @When("user check {string} on checkbox")
-    public void user_check_on_checkbox(String checkbox) {
-        if (checkbox.equalsIgnoreCase("create culture reagent")) {
-            createReagentPage.checkCreateCultureReagent();            
-        }
-    }
-    @Then("checkbox {string} is checked")
-    public void checkbox_is_checked(String checkbox) {
-        if (checkbox.equalsIgnoreCase("create culture reagent")) {   
-            assertTrue(createReagentPage.isCreateCultureChecked());
         }
     }
 }

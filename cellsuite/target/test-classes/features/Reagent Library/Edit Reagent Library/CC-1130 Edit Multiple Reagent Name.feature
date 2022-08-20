@@ -12,28 +12,31 @@ Feature: CC-1130:Edit multiple reagent item
     When user clicks on menu "Reagent"
     And user clicks on sub-menu "Library"
     Then user is navigated to "Reagent Library" page
-    And reagent items is already exist
+    And "Reagent 6" items is "already" exist
+    And "Reagent 7" items is "already" exist
 
     Scenario: Select and Edit some reagent item
-    When user select an reagent item "Reagent 2" by check the checkbox
-    Then reagent checkbox "Reagent 2" item is checked
+    When user select an item "Reagent 6" by check the checkbox 
+    Then item "Reagent 6" is checked
     And icon "edit" is enabled in page
-    When user select an reagent item "Reagent 3" by check the checkbox
-    Then reagent checkbox "Reagent 3" item is checked
-    When user clicks on "edit" icon in page
+    When user select an item "Reagent 7" by check the checkbox
+    Then item "Reagent 7" is checked
+    When user clicks on "edit" icon
     Then user is navigated to "Edit Reagent" page
-    When user change "name" with "Reagent 2.0"
-    And user change "note" with "Reagent 2 with Antibiotic"
-    And user clicks on "save" button in page
+    When user "change" "Reagent 6.0" in "name" textbox
+    And user "change" "Reagent 6.0 with Antibiotic" in "notes" textbox
+    And user clicks on "save" button 
     Then modal "Save Confirm" confirmation is displayed
     When user clicks on "OK" button in modal
     Then notification "Success" and "Reagent has been updated" is displayed
-    When user clicks on "next" icon in page
-    When user change "name" with "Reagent 3.0"
-    And user change "note" with "Reagent 3 with Antibiotic"
-    And user clicks on "save" button in page
+    When user clicks on "next" icon 
+    When user "change" "Reagent 7.0" in "name" textbox
+    And user "change" "Reagent 7.0 with Antibiotic" in "notes" textbox
+    And user clicks on "save" button 
     Then modal "Save Confirm" confirmation is displayed
     When user clicks on "OK" button in modal
     Then notification "Success" and "Reagent has been updated" is displayed
-    When user clicks on "close" icon in page
+    When user clicks on "close" icon 
     And user is navigated to "Reagent Library" page
+    And item "Reagent 6" change to be "Reagent 6.0"
+    And item "Reagent 7" change to be "Reagent 7.0"

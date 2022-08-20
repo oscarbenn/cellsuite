@@ -1,4 +1,0 @@
-@CC-1116_Create_new_Cell_Line_with_Passage_After_Time_Interval_and_Imaging_Interval
-Feature: @CC-1116_Create_new_Cell_Line_with_Passage_After_Time_Interval_and_Imaging_Interval
-
-    Feature Description

@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,8 @@ public class CreateCellLinesPage {
     WebElement txt_notes;
     @FindBy(xpath = "//div[@data-testid=\"passage-after\"]")
     WebElement radio_pasageAfter;
+    @FindBy(xpath = "//div[.='Passage After']/parent::div/parent::div/parent::div/following-sibling::div[1]/div/div/div/div[2]/div")
+    WebElement alert_passageAfter;
     @FindBy(xpath = "//input[@value=\"Confluency\"]")
     WebElement radio_confluency;
     @FindBy(xpath = "//input[@value=\"TimeInterval\"]")
@@ -73,6 +76,8 @@ public class CreateCellLinesPage {
     WebElement checkbox_imaging;
     @FindBy(xpath = "//input[@data-testid=\"imaging-interval-hour\"]")
     WebElement txt_imagingInterval;
+    @FindBy(xpath = "//input[@data-testid='imaging-interval-hour']/parent::span/parent::span/parent::div/parent::div/parent::div/following-sibling::div/div")
+    WebElement alert_imagingInterval;
 
     @FindBy(xpath = "//input[@data-testid=\"estimate-doubling-time-hour\"]")
     WebElement txt_estimateDoublingTime;
@@ -175,7 +180,7 @@ public class CreateCellLinesPage {
         return inputselect_mediaReplacement.getText();
     }
 
-    public void enterconfeedingInterval(String content) {
+    public void enterFeedingInterval(String content) {
         txt_feedingInterval.sendKeys(content);
     }
     public String getFeedingIntervalValue() {
@@ -225,11 +230,15 @@ public class CreateCellLinesPage {
     }
     
     public void entercellDilutionRatio(String content) {
-        txt_cellDulation.clear();
+        txt_cellDulation.click();
+        txt_cellDulation.sendKeys(Keys.CONTROL+"A");
+        txt_cellDulation.sendKeys(Keys.BACK_SPACE);
         txt_cellDulation.sendKeys(content);
     }
     public void enterdyedilutionratio(String content) {
-        txt_dyeDilution.clear();
+        txt_dyeDilution.click();
+        txt_dyeDilution.sendKeys(Keys.CONTROL+"A");
+        txt_dyeDilution.sendKeys(Keys.BACK_SPACE);
         txt_dyeDilution.sendKeys(content);
     }
     public String getCellDilutionRatioValue() {
@@ -239,7 +248,7 @@ public class CreateCellLinesPage {
         return txt_dyeDilution.getAttribute("value");
     }
 
-    public void enterimagingInterval(String content) {
+    public void enterImagingInterval(String content) {
         txt_imagingInterval.sendKeys(content);
     }
     public String getImagingIntervalValue() {
@@ -289,4 +298,32 @@ public class CreateCellLinesPage {
     public void clickimagingInterval() {
         checkbox_imaging.click();
     }
+
+    public void selectMediaReplacement(String persen) {
+        click_mediaReplacement.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(opsi_mediaReplacement));
+        WebElement opsi = Function.choose(opsi_mediaReplacement, persen);
+        opsi.click();
+    }
+
+    public String getMediaReplacementValue(){
+        return inputselect_mediaReplacement.getText();
+    }
+
+    public boolean checkboxImagingIsEnabled() {
+        return checkbox_imaging.isEnabled();
+    }
+
+    public boolean alertPassageAfterIsDisplayed() {
+        return alert_passageAfter.isDisplayed();
+    }
+
+    public boolean alertImagingIntervalIsDisplayed() {
+        return alert_imagingInterval.isDisplayed();
+    }
+
+    public boolean imagingIntervalIsEnabled() {
+        return txt_imagingInterval.isEnabled();
+    }
+
 }

@@ -1,22 +1,213 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="18.652">
-    <testcase classname="CC-1080:Create new reagent" name="create new reagent item" time="18.094">
+<testsuite errors="0" failures="3" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="73.248">
+    <testcase classname="create reagent culture 7-9" name="user create new culture reagent item" time="17.556">
         <system-out><![CDATA[Given user has already logged in to application with this credentials.......passed
 And user is navigated to "Dashboard" page...................................passed
 When user clicks on menu "Reagent"..........................................passed
-And user clicks on sub-menu "Library".......................................passed
-Then user is navigated to "Reagent Library" page............................passed
-When user clicks on "create" button in page.................................passed
-Then user is navigated to "Create Reagent" page.............................passed
-When user fill the form in Create Reagent page with this data...............passed
-Then all fields in Create Reagent page is filled with this data.............passed
-When user clicks on "save" button in page...................................passed
-And notification "Success" and "Reagent has been created" is displayed......passed
-And there is "new" item "Reagent 2" created in table........................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+When user clicks on "create" button.........................................passed
+Then user is navigated to "Create Culture Reagent" page.....................passed
+When user "type" "Reagent 7 Culture" in "name" textbox......................passed
+Then textbox "name" will fill by "Reagent 7 Culture"........................passed
+When user "type" "create culture reagent 7" in "notes" textbox..............passed
+Then textbox "notes" will fill by "create culture reagent 7"................passed
+When user select reagent compotition "DMEM High Glucose" and type "100" in persentage.passed
+Then composition reagent selected is "DMEM High Glucose"....................passed
+And accepted total volume of reagent is "100"...............................passed
+When user clicks on "save" button...........................................passed
+Then notification "Success" and "Culture Reagent has been created" is displayed.passed
+And there is "new" item "Reagent 7 Culture" created in table................passed
+When user clicks on "create" button.........................................passed
+Then user is navigated to "Create Culture Reagent" page.....................passed
+When user "type" "Reagent 8 Culture" in "name" textbox......................passed
+Then textbox "name" will fill by "Reagent 8 Culture"........................passed
+When user "type" "create culture reagent 8" in "notes" textbox..............passed
+Then textbox "notes" will fill by "create culture reagent 8"................passed
+When user select reagent compotition "DMEM High Glucose" and type "100" in persentage.passed
+Then composition reagent selected is "DMEM High Glucose"....................passed
+And accepted total volume of reagent is "100"...............................passed
+When user clicks on "save" button...........................................passed
+Then notification "Success" and "Culture Reagent has been created" is displayed.passed
+And there is "new" item "Reagent 8 Culture" created in table................passed
+When user clicks on "create" button.........................................passed
+Then user is navigated to "Create Culture Reagent" page.....................passed
+When user "type" "Reagent 9 Culture" in "name" textbox......................passed
+Then textbox "name" will fill by "Reagent 9 Culture"........................passed
+When user "type" "create culture reagent 9" in "notes" textbox..............passed
+Then textbox "notes" will fill by "create culture reagent 9"................passed
+When user select reagent compotition "DMEM High Glucose" and type "100" in persentage.passed
+Then composition reagent selected is "DMEM High Glucose"....................passed
+And accepted total volume of reagent is "100"...............................passed
+When user clicks on "save" button...........................................passed
+Then notification "Success" and "Culture Reagent has been created" is displayed.passed
+And there is "new" item "Reagent 9 Culture" created in table................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="CC-1102:Create new Culture Reagent" name="user create new culture reagent item" time="11.007">
+        <system-out><![CDATA[Given user has already logged in to application with this credentials.......passed
+And user is navigated to "Dashboard" page...................................passed
 When user clicks on menu "Reagent"..........................................passed
 And user clicks on sub-menu "Culture Reagent"...............................passed
 Then user is navigated to "Culture Reagent" page............................passed
-And there is "no new" item "Reagent 2" created in table.....................passed
+When user clicks on "create" button.........................................passed
+Then user is navigated to "Create Culture Reagent" page.....................passed
+When user "type" "Reagent 10 Culture" in "name" textbox.....................passed
+Then textbox "name" will fill by "Reagent 10 Culture".......................passed
+When user "type" "create culture reagent 10" in "notes" textbox.............passed
+Then textbox "notes" will fill by "create culture reagent 10"...............passed
+When user select reagent compotition "DMEM High Glucose" and type "100" in persentage.passed
+Then composition reagent selected is "DMEM High Glucose"....................passed
+And accepted total volume of reagent is "100"...............................passed
+When user clicks on "save" button...........................................passed
+Then notification "Success" and "Culture Reagent has been created" is displayed.passed
+And there is "new" item "Reagent 10 Culture" created in table...............passed
 ]]></system-out>
+    </testcase>
+    <testcase classname="CC-1110:Delete One Culture Reagent" name="Select and Delete an Culture reagent item" time="10.779">
+        <system-out><![CDATA[Given user has already logged in to application with this credentials.......passed
+And user is navigated to "Dashboard" page...................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+And "Reagent 10 Culture" items is "already" exist...........................passed
+When user select an item "Reagent 10 Culture" by check the checkbox.........passed
+Then item "Reagent 10 Culture" is checked...................................passed
+And icon "delete" is enabled in page........................................passed
+When user clicks on "delete" icon...........................................passed
+Then modal "Delete Culture Reagent" confirmation is displayed...............passed
+When user clicks on "OK" button in modal....................................passed
+Then notification "Success" and "Culture Reagents has been deleted" is displayed.passed
+And "Reagent 10 Culture" items is "not" exist...............................passed
+When user refresh the browser page..........................................passed
+Then user is navigated to "Dashboard" page..................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+And "Reagent 10 Culture" items is "not" exist...............................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="CC-1131: Edit Multiple Culture Reagent Item" name="Select and Edit multiple culture reagent item" time="12.183">
+        <failure message="" type="java.lang.AssertionError"><![CDATA[Given user has already logged in to application with this credentials.......passed
+And user is navigated to "Dashboard" page...................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+And "Reagent 8 Culture" items is "already" exist............................failed
+And "Reagent 9 Culture" items is "already" exist............................skipped
+When user select an item "Reagent 8 Culture" by check the checkbox..........skipped
+Then item "Reagent 8 Culture" is checked....................................skipped
+And icon "edit" is enabled in page..........................................skipped
+When user select an item "Reagent 9 Culture" by check the checkbox..........skipped
+Then item "Reagent 9 Culture" is checked....................................skipped
+When user clicks on "edit" icon.............................................skipped
+Then user is navigated to "Edit Culture Reagent" page.......................skipped
+When user "change" "Reagent 8.0 Culture" in "name" textbox..................skipped
+Then textbox "name" will fill by "Reagent 8.0 Culture"......................skipped
+When user "change" "Create Reagent 8.0 Culture" in "notes" textbox..........skipped
+Then textbox "notes" will fill by "Create Reagent 8.0 Culture"..............skipped
+When user select reagent compotition "Trypsin" and type "100" in persentage.skipped
+Then composition reagent selected is "Trypsin"..............................skipped
+And accepted total volume of reagent is "100"...............................skipped
+When user clicks on "save" button...........................................skipped
+Then modal "Save Confirm" confirmation is displayed.........................skipped
+When user clicks on "OK" button in modal....................................skipped
+Then notification "Success" and "Culture Reagent has been updated" is displayed.skipped
+And user clicks on "next" icon..............................................skipped
+When user "change" "Reagent 9.0 Culture" in "name" textbox..................skipped
+Then textbox "name" will fill by "Reagent 9.0 Culture"......................skipped
+And user "change" "Create Reagent 9.0 Culture" in "notes" textbox...........skipped
+Then textbox "notes" will fill by "Create Reagent 9.0 Culture"..............skipped
+When user select reagent compotition "Trypsin" and type "100" in persentage.skipped
+Then composition reagent selected is "Trypsin"..............................skipped
+And accepted total volume of reagent is "100"...............................skipped
+When user clicks on "save" button...........................................skipped
+Then modal "Save Confirm" confirmation is displayed.........................skipped
+When user clicks on "OK" button in modal....................................skipped
+Then notification "Success" and "Culture Reagent has been updated" is displayed.skipped
+When user clicks on "close" icon............................................skipped
+Then user is navigated to "Culture Reagent" page............................skipped
+
+StackTrace:
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepDefinition.GeneralStep.items_is_exist(GeneralStep.java:152)
+	at ✽."Reagent 8 Culture" items is "already" exist(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Culture%20Reagent/Edit%20Culture%20Reagent/CC-1131%20Edit%20Multiple%20Culture%20Reagent%20Item.feature:15)
+]]></failure>
+    </testcase>
+    <testcase classname="CC-1132: Edit One Culture Reagent Item" name="Select and Edit an culture reagent item" time="11.712">
+        <failure message="" type="java.lang.AssertionError"><![CDATA[Given user has already logged in to application with this credentials.......passed
+And user is navigated to "Dashboard" page...................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+And "Reagent 7 Culture" items is "already" exist............................failed
+When user select an item "Reagent 7 Culture" by check the checkbox..........skipped
+Then item "Reagent 7 Culture" is checked....................................skipped
+And icon "edit" is enabled in page..........................................skipped
+When user clicks on "edit" icon.............................................skipped
+Then user is navigated to "Edit Culture Reagent" page.......................skipped
+When user "change" "Reagent 7.0 Culture " in "name" textbox.................skipped
+And user "change" "Create Reagent 7.0  Culture" in "notes" textbox..........skipped
+When user select reagent compotition "Trypsin" and type "100" in persentage.skipped
+Then composition reagent selected is "Trypsin"..............................skipped
+And accepted total volume of reagent is "100"...............................skipped
+And user clicks on "save" button............................................skipped
+Then modal "Save Confirm" confirmation is displayed.........................skipped
+When user clicks on "OK" button in modal....................................skipped
+Then notification "Success" and "Culture Reagent has been updated" is displayed.skipped
+And user is navigated to "Culture Reagent" page.............................skipped
+
+StackTrace:
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepDefinition.GeneralStep.items_is_exist(GeneralStep.java:152)
+	at ✽."Reagent 7 Culture" items is "already" exist(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Culture%20Reagent/Edit%20Culture%20Reagent/CC-1132%20Edit%20One%20Culture%20Reagent%20Item.feature:15)
+]]></failure>
+    </testcase>
+    <testcase classname="delete Reagent 7.0 Culture, 8.0, 9.0" name="Select and Delete an Culture reagent item" time="9.173">
+        <failure message="" type="java.lang.AssertionError"><![CDATA[Given user has already logged in to application with this credentials.......passed
+And user is navigated to "Dashboard" page...................................passed
+When user clicks on menu "Reagent"..........................................passed
+And user clicks on sub-menu "Culture Reagent"...............................passed
+Then user is navigated to "Culture Reagent" page............................passed
+And "Reagent 7.0 Culture" items is "already" exist..........................failed
+And "Reagent 8.0 Culture" items is "already" exist..........................skipped
+And "Reagent 9.0 Culture" items is "already" exist..........................skipped
+When user select an item "Reagent 7.0 Culture" by check the checkbox........skipped
+Then item "Reagent 7.0 Culture" is checked..................................skipped
+And icon "delete" is enabled in page........................................skipped
+When user select an item "Reagent 8.0 Culture" by check the checkbox........skipped
+Then item "Reagent 8.0 Culture" is checked..................................skipped
+When user select an item "Reagent 9.0 Culture" by check the checkbox........skipped
+Then item "Reagent 9.0 Culture" is checked..................................skipped
+When user clicks on "delete" icon...........................................skipped
+Then modal "Delete Culture Reagent" confirmation is displayed...............skipped
+When user clicks on "OK" button in modal....................................skipped
+Then notification "Success" and "Culture Reagents has been deleted" is displayed.skipped
+And "Reagent 7.0 Culture" items is "not" exist..............................skipped
+And "Reagent 8.0 Culture" items is "not" exist..............................skipped
+And "Reagent 9.0 Culture" items is "not" exist..............................skipped
+When user refresh the browser page..........................................skipped
+Then user is navigated to "Dashboard" page..................................skipped
+When user clicks on menu "Reagent"..........................................skipped
+And user clicks on sub-menu "Culture Reagent"...............................skipped
+Then user is navigated to "Culture Reagent" page............................skipped
+And "Reagent 7.0 Culture" items is "not" exist..............................skipped
+And "Reagent 8.0 Culture" items is "not" exist..............................skipped
+And "Reagent 9.0 Culture" items is "not" exist..............................skipped
+
+StackTrace:
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepDefinition.GeneralStep.items_is_exist(GeneralStep.java:152)
+	at ✽."Reagent 7.0 Culture" items is "already" exist(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Culture%20Reagent/Edit%20Culture%20Reagent/Z.feature:15)
+]]></failure>
     </testcase>
 </testsuite>

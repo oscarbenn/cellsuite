@@ -1,0 +1,12 @@
+button:
+-create
+-save
+
+icon:
+-edit
+-delete
+-close
+-prev
+-next
+-revert
+

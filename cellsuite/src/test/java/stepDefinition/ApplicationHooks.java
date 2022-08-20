@@ -15,6 +15,7 @@ public class ApplicationHooks {
     Properties prop;
     
     String url = "http://localhost:5050";
+    // String url = "http://cygnus.local:5050";
 
     @Before(order = 0)
     public void getProperty(){
