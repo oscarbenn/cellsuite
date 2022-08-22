@@ -1,4 +1,4 @@
-package stepDefinition.Reagent.ReagentLibrary;
+package stepDefinition.Reagent;
 
 import static org.junit.Assert.assertEquals;
 

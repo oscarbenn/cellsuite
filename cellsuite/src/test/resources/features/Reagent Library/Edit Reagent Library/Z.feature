@@ -36,7 +36,6 @@ Feature: delete reagent 1.0,,6.0,7.0, reagent 2 culture
     Then modal "Delete Culture Reagent" confirmation is displayed
     When user clicks on "OK" button in modal
     Then notification "Success" and "Culture Reagents has been deleted" is displayed
-    And "Reagent 2 Culture" items is "not" exist
 
     When user refresh the browser page
     And user is navigated to "Dashboard" page

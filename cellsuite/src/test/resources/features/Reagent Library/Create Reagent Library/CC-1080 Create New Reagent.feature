@@ -9,7 +9,7 @@ Feature: CC-1080:Create new reagent
     |username|password|
     |admin|admin|
     And user is navigated to "Dashboard" page
-    When user clicks on menu "Reagent"
+    When user clicks on menu "reagent"
     And user clicks on sub-menu "Library"
     Then user is navigated to "Reagent Library" page
 
