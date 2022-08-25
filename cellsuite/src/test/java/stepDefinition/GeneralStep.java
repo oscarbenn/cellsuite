@@ -1,6 +1,7 @@
 package stepDefinition;
 import static org.junit.Assert.*;
 
+import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,22 +41,28 @@ public class GeneralStep {
 
     @When("user clicks on menu {string}")
     public void user_clicks_on_menu(String menu) {
-        List<WebElement> menuElements = driver.findElements(By.xpath("//ul[@role=\"menu\"]/li"));
-        WebElement elementChoosen = Function.choose(menuElements, menu);
-        elementChoosen.click();
+        // List<WebElement> menuElements = driver.findElements(By.xpath("//ul[@role=\"menu\"]/li")); //span[text()='"+menu+"']/parent::div/parent::li
+        // WebElement elementChoosen = Function.choose(menuElements, menu);
+        // elementChoosen.click();
+        WebElement menuElement = driver.findElement(By.xpath("//*[.='"+menu+"']/parent::li"));//ul[@role=\"menu\"]/li[@data-testid='"+menu+"']
+        menuElement.click();
     }
 
     @When("user clicks on sub-menu {string}")
     public void user_clicks_on_sub_menu(String submenu) {
-        List<WebElement> submenuElements = driver.findElements(By.xpath("//ul[@role=\"menu\"]/li/ul/li"));
-        wait.until(ExpectedConditions.visibilityOfAllElements(submenuElements));
-        WebElement elementChoosen = Function.choose(submenuElements, submenu);
-        elementChoosen.click();
+        // List<WebElement> submenuElements = driver.findElements(By.xpath("//ul[@role=\"menu\"]/li/ul/li"));
+        // wait.until(ExpectedConditions.visibilityOfAllElements(submenuElements));
+        // WebElement elementChoosen = Function.choose(submenuElements, submenu);
+        // elementChoosen.click();
+        WebElement submenuElement = driver.findElement(By.xpath("//span[text()='"+submenu+"']/parent::li"));
+        wait.until(ExpectedConditions.visibilityOf(submenuElement));
+        submenuElement.click();
     }
 
     @When("user clicks on {string} button")
     public void user_clicks_on_button(String button) {
-        WebElement buttonElement = driver.findElement(By.xpath("//button[@data-testid=\'"+button+"-button']")); //*[text()='"+button+"']
+        WebElement buttonElement = driver.findElement(By.xpath("//*[text()='"+button+"']/parent::button")); //*[text()='"+button+"'] //button[@data-testid='"+button+"-button']
+        wait.until(ExpectedConditions.elementToBeClickable(buttonElement));
         buttonElement.click();
     }
 
@@ -74,12 +82,14 @@ public class GeneralStep {
     public void modal_confirmation_is_displayed(String modal) {
         WebElement modalElement = driver.findElement(By.xpath("//*[@class='ant-modal-content']/child::div[1]/child::div"));
         wait.until(ExpectedConditions.visibilityOf(modalElement));
-        assertEquals(modal, modalElement.getText()); 
+        assertTrue(modalElement.getText().contains(modal)); 
     }
 
     @Then("icon {string} is enabled in page")
     public void icon_is_enabled_in_page(String icon) {
         WebElement iconElement = driver.findElement(By.xpath("//span[@data-testid=\'"+icon+"-icon\']"));
+        // wait.until(ExpectedConditions.elementToBeClickable(iconElement));
+        wait.until(ExpectedConditions.attributeToBe(iconElement, "class", "anticon anticon-"+icon+""));
         assertFalse(iconElement.getAttribute("class").contains("disabled"));
     }
 
@@ -91,7 +101,7 @@ public class GeneralStep {
 
     @When("user clicks on {string} button in modal")
     public void user_clicks_on_button_in_modal(String button) {
-        WebElement buttonElement = driver.findElement(By.xpath("//div[@class='ant-modal-footer']/button/span[text()='"+button+"']"));
+        WebElement buttonElement = driver.findElement(By.xpath("(//*[text()='"+button+"']/parent::button)[2]"));//div[@class='ant-modal-footer']/button/span[text()='"+button+"']
         buttonElement.click();
     }
 
@@ -99,7 +109,7 @@ public class GeneralStep {
     public void notification_and_is_displayed(String notif, String desc) {
         WebElement notifElement = driver.findElement(By.xpath("//div[@class='ant-notification-notice-message']"));
         WebElement descElement = driver.findElement(By.xpath("//div[@class='ant-notification-notice-description']"));
-        wait.until(ExpectedConditions.visibilityOfAllElements(notifElement));
+        wait.until(ExpectedConditions.visibilityOf(notifElement));
         assertEquals(notif, notifElement.getText());
         assertEquals(desc, descElement.getText());
     }
@@ -115,11 +125,13 @@ public class GeneralStep {
     @When("user {string} {string} in {string} textbox")
     public void user_in_textbox(String action, String fill, String textbox){
         WebElement textboxElement = driver.findElement(By.xpath("//*[@id='basic_"+textbox+"']")); //*[@data-testid='"+textbox+"']    |    //*[text()='"+label+"']/parent::div/parent::div/child::div[2]/child::div/child::div/child::span/child::input
+        wait.until(ExpectedConditions.elementToBeClickable(textboxElement));
         switch (action) {
             case "type":
                 textboxElement.sendKeys(fill);
                 break;
             case "change":
+                wait.until(ExpectedConditions.elementToBeClickable(textboxElement));
                 textboxElement.click();
                 textboxElement.sendKeys(Keys.CONTROL+"A");
                 textboxElement.sendKeys(Keys.BACK_SPACE);
@@ -132,16 +144,23 @@ public class GeneralStep {
     @Then("textbox {string} will fill by {string}")
     public void textbox_will_fill_by(String textbox, String fill){
         WebElement textboxElement = driver.findElement(By.xpath("//*[@data-testid='"+textbox+"']")); //*[text()='"+label+"']/parent::div/parent::div/child::div[2]/child::div/child::div/child::span/child::input
+        String value = textboxElement.getAttribute("value");
+        if (value.isEmpty()) {
+            value = textboxElement.getText();
+        }
         assertEquals(fill, textboxElement.getAttribute("value"));
+
     }
 
     @Then("{string} items is {string} exist")
     public void items_is_exist(String itemName, String condition) {
+        WebElement table = driver.findElement(By.xpath("//table/tbody/tr[3]"));
+        wait.until(ExpectedConditions.visibilityOf(table));
         boolean isExist=false;
         List<WebElement> itemElements = driver.findElements(By.xpath("//table/tbody/tr"));
-        for (int i = 1; i < itemElements.size(); i++) {
-            WebElement nameItems = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[2]"));
-            System.out.println(nameItems);
+        for (int i = 0; i < itemElements.size(); i++) {
+            WebElement nameItems = driver.findElement(By.xpath("//table/tbody/tr["+(i+1)+"]/td[2]")); //table/tbody/tr[3]/td[2][text()='Reagent 1.0']
+            System.out.println(nameItems.getText());
             if (nameItems.getText().equals(itemName)) {
                 isExist = true;
                 break; 
@@ -167,8 +186,9 @@ public class GeneralStep {
         for (int i = 1; i < itemElements.size(); i++) {
             WebElement nameItems = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[2]"));
             if (nameItems.getText().equals(itemName)) {
-                driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[1]")).click();
-
+                WebElement checkboxElement = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[1]"));
+                wait.until(ExpectedConditions.elementToBeClickable(checkboxElement));
+                checkboxElement.click();
                 break;
             }
         }
@@ -262,7 +282,7 @@ public class GeneralStep {
     @When("user choose item {string} in modal select")
     public void user_choose_item_in_modal_select(String itemName){
         List<WebElement> opsi = driver.findElements(By.xpath("//table/tbody/tr/td[2]"));
-        wait.until(ExpectedConditions.visibilityOf(opsi.get(1)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table/tbody/tr[2]")));
         for (int i = 0; i < opsi.size(); i++) {
             String label = opsi.get(i).getText();
             if (label.equalsIgnoreCase(itemName)) {
@@ -287,6 +307,7 @@ public class GeneralStep {
     @Then("{string} item is selected in the modal")
     public void item_is_selected_in_the_modal(String itemName){
         WebElement selectedElement = driver.findElement(By.xpath("//span[text()='Currently Selected: ']/parent::div/parent::div"));
+        wait.until(ExpectedConditions.visibilityOf(selectedElement));
         assertTrue(selectedElement.getText().contains(itemName));
     }
 
@@ -296,6 +317,12 @@ public class GeneralStep {
         WebElement boxElement = driver.findElement(By.xpath("//label[contains(.,'"+box+"')]/parent::div/following-sibling::div/div/div/div/span/span/input"));
         switch (action) {
             case "type":
+                boxElement.sendKeys(content);
+                break;
+            case "fill":
+                boxElement.click();
+                boxElement.sendKeys(Keys.CONTROL+"A");
+                boxElement.sendKeys(Keys.BACK_SPACE);
                 boxElement.sendKeys(content);
                 break;
             default:
@@ -310,14 +337,16 @@ public class GeneralStep {
         assertEquals(content, boxElement.getAttribute("value"));
     }
 
-    @Then("user validating data new cell line")
-    public void user_validating_data_new_cell_line(DataTable datas) {
+    @Then("data new cell line will show")
+    public void data_new_cell_line_will_show(DataTable datas) {
         List<String> type = datas.row(0);
         List<String> content = datas.row(1);
+        WebElement detailElement = driver.findElement(By.xpath("//div[@class='detail-container']"));
+        wait.until(ExpectedConditions.visibilityOf(detailElement));
         for (int i = 0; i < type.size(); i++) {
             String dataType = type.get(i);
             String dataContent = content.get(i);
-            WebElement detailElement = driver.findElement(By.xpath("//div[@class='detail-container']/div/div[contains(.,'"+dataType+"')]/following-sibling::div[2]"));
+            detailElement = driver.findElement(By.xpath("//div[@class='detail-container']/div/div[contains(.,'"+dataType+"')]/following-sibling::div[2]"));
             assertEquals(dataContent, detailElement.getText());
         }
     }
@@ -351,4 +380,31 @@ public class GeneralStep {
         WebElement selectAllElement = driver.findElement(By.xpath("//table/thead/tr/th[1]/div/label/span"));
         selectAllElement.click();
     }
+
+    //label[@title='Labware']/parent::div/following-sibling::div/div/div/div/div/span/input
+
+    @When("user select {string} in dropdown {string}")
+    public void user_select_in_dropdown(String item, String dropdown){
+        // WebElement Element = driver.findElement(By.xpath("//label[@title='"+dropdown+"']/parent::div/following-sibling::div/div/div/div")); 
+        WebElement dropdownElement = driver.findElement(By.xpath("//label[@title='"+dropdown+"']/parent::div/following-sibling::div/div/div/div/div/span/input"));
+        String id = dropdownElement.getAttribute("aria-owns");
+        System.out.println(id);
+        dropdownElement.click();
+        List<WebElement> opsi = driver.findElements(By.xpath("//div[@id='"+id+"']/following-sibling::div/div/div/div/div"));
+        for (int i = 0; i < opsi.size(); i++) {
+            String label = opsi.get(i).getAttribute("label");
+            if (label.equalsIgnoreCase(item)) {
+                opsi.get(i).click();
+                break;
+            }
+        }
+    }
+
+    @Then("dropdown {string} is filled by {string}")
+    public void dropdown_is_filled_by(String dropdown, String fill){
+        WebElement dropdownElement = driver.findElement(By.xpath("//label[@title='"+dropdown+"']/parent::div/following-sibling::div/div/div/div/div/span/following-sibling::span"));
+        assertEquals(fill, dropdownElement.getText());
+    }
+
+
 }

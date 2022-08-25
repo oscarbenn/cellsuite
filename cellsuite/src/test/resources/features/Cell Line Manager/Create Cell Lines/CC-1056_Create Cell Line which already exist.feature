@@ -1,3 +1,4 @@
+@cellline
 @CC-1056_Create_Cell_Line_which_already_exist
 Feature: CC-1056:Create Cell Line which already exist
 
@@ -11,7 +12,7 @@ Feature: CC-1056:Create Cell Line which already exist
     When user clicks on menu "Cell Line"
     Then user is navigated to "Cell Line" page
     And "my cell 1" items is "already" exist
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Cell Lines" page
 
     Scenario: Create New Cell Line
@@ -37,7 +38,7 @@ Feature: CC-1056:Create Cell Line which already exist
     Then modal "Select Media Selection" confirmation is displayed
     When user choose item "DMEM FBS 10" in modal select
     Then "DMEM FBS 10" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Media Selection" filled by "DMEM FBS 10"
     
     When user select "100%" on Media Replacement persentage
@@ -49,7 +50,7 @@ Feature: CC-1056:Create Cell Line which already exist
     Then modal "Select Detachment Selection" confirmation is displayed
     When user choose item "Trypsin" in modal select
     Then "Trypsin" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Detachment Reagent" filled by "Trypsin"
     
     When user "type" on box "Detachment Reagent Volume" as "600"
@@ -70,5 +71,5 @@ Feature: CC-1056:Create Cell Line which already exist
     When user "type" on box Cell Dye Ratio as "1" to "1"
     Then box Cell Dye Ratio filled by "1" to "1"
 
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "One or more validation errors occurred." and "Name already exists. Use another Name." is displayed

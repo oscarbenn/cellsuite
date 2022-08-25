@@ -1,3 +1,4 @@
+@cellline
 @CC-1125_Change_Passage_After_Confluency_into_Time_Interval_without_Imaging_Interval
 Feature: CC-1125_Change Passage After Confluency into Time Interval without Imaging Interval
 
@@ -9,15 +10,15 @@ Feature: CC-1125_Change Passage After Confluency into Time Interval without Imag
     And user is navigated to "Dashboard" page
     When user clicks on menu "Cell Line"
     Then user is navigated to "Cell Line" page
-    And "my cell 3.0 edit" items is "already" exist
+    And "my cell 8.0 edit" items is "already" exist
 
     Scenario: Edit
-    When user select an item "my cell 3" by check the checkbox
-    Then item "my cell 3" is checked
+    When user select an item "my cell 8.0 edit" by check the checkbox
+    Then item "my cell 8.0 edit" is checked
     And icon "edit" is enabled in page
     When user clicks on "edit" icon
     Then user is navigated to "Edit Cell Lines" page
-    When user "change" "my cell 3.1.0 edit" in "name" textbox
+    When user "change" "my cell 8.1 edit" in "name" textbox
 
     When user select "Time Interval" radio
     Then radio "Time Interval" is selected
@@ -28,14 +29,14 @@ Feature: CC-1125_Change Passage After Confluency into Time Interval without Imag
     When user clicks to uncheck on "Imaging Interval" checkbox
     Then box Imaging Interval is disabled 
 
-    And user clicks on "save" button
+    And user clicks on "Save" button
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Cell Lines has been updated" is displayed
     And user is navigated to "Cell Line" page
-    When user clicks detail button of item "my cell 3.1.0 edit"
-    And user validating data new cell line
+    When user clicks detail button of item "my cell 8.1 edit"
+    Then data new cell line will show
     | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
-    | my cell 3.1.0 edit | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 78 hour(s) | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
+    | my cell 8.1 edit | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 78 hour(s) | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
 
         

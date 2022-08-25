@@ -1,3 +1,4 @@
+@cellline
 @CC-1052_Delete_Cell_Line_which_already_used_in_inventory
 Feature: CC-1052:Delete Cell Line which already used in inventory
 
@@ -16,6 +17,6 @@ Feature: CC-1052:Delete Cell Line which already used in inventory
     Then icon "delete" is enabled in page
     When user clicks on "delete" icon
     Then modal "Delete Cell Lines" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "One or more validation errors occurred." and "Can't delete, data is still used in InventoryContent." is displayed
     

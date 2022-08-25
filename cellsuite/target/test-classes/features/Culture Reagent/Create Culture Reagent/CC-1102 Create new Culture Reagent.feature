@@ -14,7 +14,7 @@ Feature: CC-1102:Create new Culture Reagent
     Then user is navigated to "Culture Reagent" page
 
     Scenario: user create new culture reagent item
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Culture Reagent" page
     When user "type" "Reagent 10 Culture" in "name" textbox
     Then textbox "name" will fill by "Reagent 10 Culture"
@@ -25,7 +25,7 @@ Feature: CC-1102:Create new Culture Reagent
     Then composition reagent selected is "DMEM High Glucose" 
     And accepted total volume of reagent is "100"
 
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Culture Reagent has been created" is displayed
     And there is "new" item "Reagent 10 Culture" created in table
     

@@ -161,6 +161,9 @@ public class CreateCellLinesPage {
         return txt_confluency.getAttribute("value");
     }
     public void enterTime(String content) {
+        txt_time.click();
+        txt_time.sendKeys(Keys.CONTROL+"A");
+        txt_time.sendKeys(Keys.BACK_SPACE);
         txt_time.sendKeys(content);
     }
     public String getTimeValue() {

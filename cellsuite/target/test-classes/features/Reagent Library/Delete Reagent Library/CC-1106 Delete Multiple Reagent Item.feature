@@ -23,7 +23,7 @@ Feature: CC-1106:Delete multiple reagent item
     Then item "Reagent 5" is checked 
     When user clicks on "delete" icon
     Then modal "Delete reagents" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagents has been deleted" is displayed
     And "Reagent 4" items is "not" exist
     And "Reagent 5" items is "not" exist

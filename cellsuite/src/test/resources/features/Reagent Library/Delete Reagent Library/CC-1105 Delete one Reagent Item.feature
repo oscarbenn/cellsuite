@@ -20,7 +20,7 @@ Feature: CC-1105:Delete one reagent item
     And icon "delete" is enabled in page
     When user clicks on "delete" icon
     Then modal "Delete reagents" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagents has been deleted" is displayed
     And "Reagent 3" items is "not" exist
     When user refresh the browser page

@@ -25,16 +25,16 @@ Feature: CC-1130:Edit multiple reagent item
     Then user is navigated to "Edit Reagent" page
     When user "change" "Reagent 6.0" in "name" textbox
     And user "change" "Reagent 6.0 with Antibiotic" in "notes" textbox
-    And user clicks on "save" button 
+    And user clicks on "Save" button 
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagent has been updated" is displayed
     When user clicks on "next" icon 
     When user "change" "Reagent 7.0" in "name" textbox
     And user "change" "Reagent 7.0 with Antibiotic" in "notes" textbox
-    And user clicks on "save" button 
+    And user clicks on "Save" button 
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagent has been updated" is displayed
     When user clicks on "close" icon 
     And user is navigated to "Reagent Library" page

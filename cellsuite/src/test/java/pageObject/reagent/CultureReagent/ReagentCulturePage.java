@@ -3,6 +3,7 @@ package pageObject.reagent.CultureReagent;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -81,14 +82,19 @@ public class ReagentCulturePage {
     }
 
     public void clickbtnMenu(String menu) {
-        WebElement choosen = Function.choose(menu_elements, menu);
-        choosen.click();
-        wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
+        // WebElement choosen = Function.choose(menu_elements, menu);
+        // choosen.click();
+        // wait.until(ExpectedConditions.visibilityOfAllElements(submenu_elements));
+        WebElement menuElement = driver.findElement(By.xpath("//span[text()='"+menu+"']/parent::div/parent::li"));//ul[@role=\"menu\"]/li[@data-testid='"+menu+"']
+        menuElement.click();
     }
 
     public void clickbtnSubMenu(String submenu) {
-        WebElement choosen = Function.choose(submenu_elements, submenu);
-        choosen.click();
+        // WebElement choosen = Function.choose(submenu_elements, submenu);
+        // choosen.click();
+        WebElement submenuElement = driver.findElement(By.xpath("//span[text()='"+submenu+"']/parent::li"));
+        wait.until(ExpectedConditions.visibilityOf(submenuElement));
+        submenuElement.click();
     }
 
     public EditReagentCulturePage clickButtonEdit() {

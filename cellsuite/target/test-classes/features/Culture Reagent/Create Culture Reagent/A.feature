@@ -1,4 +1,5 @@
 @reagentculture
+@A
 Feature: create reagent culture 7-9
 
     Background: User is on Reagent Culture menu
@@ -11,7 +12,7 @@ Feature: create reagent culture 7-9
     Then user is navigated to "Culture Reagent" page
 
     Scenario: user create new culture reagent item
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Culture Reagent" page
     When user "type" "Reagent 7 Culture" in "name" textbox
     Then textbox "name" will fill by "Reagent 7 Culture"
@@ -20,11 +21,11 @@ Feature: create reagent culture 7-9
     When user select reagent compotition "DMEM High Glucose" and type "100" in persentage
     Then composition reagent selected is "DMEM High Glucose" 
     And accepted total volume of reagent is "100"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Culture Reagent has been created" is displayed
     And there is "new" item "Reagent 7 Culture" created in table
 
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Culture Reagent" page
     When user "type" "Reagent 8 Culture" in "name" textbox
     Then textbox "name" will fill by "Reagent 8 Culture"
@@ -33,11 +34,11 @@ Feature: create reagent culture 7-9
     When user select reagent compotition "DMEM High Glucose" and type "100" in persentage
     Then composition reagent selected is "DMEM High Glucose" 
     And accepted total volume of reagent is "100"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Culture Reagent has been created" is displayed
     And there is "new" item "Reagent 8 Culture" created in table
 
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Culture Reagent" page
     When user "type" "Reagent 9 Culture" in "name" textbox
     Then textbox "name" will fill by "Reagent 9 Culture"
@@ -46,6 +47,6 @@ Feature: create reagent culture 7-9
     When user select reagent compotition "DMEM High Glucose" and type "100" in persentage
     Then composition reagent selected is "DMEM High Glucose" 
     And accepted total volume of reagent is "100"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Culture Reagent has been created" is displayed
     And there is "new" item "Reagent 9 Culture" created in table

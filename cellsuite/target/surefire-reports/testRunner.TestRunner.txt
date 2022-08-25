@@ -1,7 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: testRunner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 34.709 s <<< FAILURE! - in testRunner.TestRunner
-CC-1080:Create new reagent.create new reagent item  Time elapsed: 21.16 s  <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "elementChoosen" is null
+Tests run: 6, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 113.408 s <<< FAILURE! - in testRunner.TestRunner
+CC-1131: Edit Multiple Culture Reagent Item.Select and Edit multiple culture reagent item  Time elapsed: 30.211 s  <<< FAILURE!
+java.lang.AssertionError
+
+CC-1132: Edit One Culture Reagent Item.Select and Edit an culture reagent item  Time elapsed: 7.682 s  <<< FAILURE!
+java.lang.AssertionError
+
+delete Reagent 7.0 Culture, 8.0, 9.0.Select and Delete an Culture reagent item  Time elapsed: 14.62 s  <<< FAILURE!
+java.lang.AssertionError
 

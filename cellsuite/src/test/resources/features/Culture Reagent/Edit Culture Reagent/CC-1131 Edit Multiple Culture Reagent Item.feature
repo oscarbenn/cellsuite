@@ -30,9 +30,9 @@ Feature: CC-1131: Edit Multiple Culture Reagent Item
     When user select reagent compotition "Trypsin" and type "100" in persentage
     Then composition reagent selected is "Trypsin" 
     And accepted total volume of reagent is "100"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagent has been updated" is displayed
 
     And user clicks on "next" icon
@@ -43,9 +43,9 @@ Feature: CC-1131: Edit Multiple Culture Reagent Item
     When user select reagent compotition "Trypsin" and type "100" in persentage
     Then composition reagent selected is "Trypsin" 
     And accepted total volume of reagent is "100"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagent has been updated" is displayed
 
     When user clicks on "close" icon

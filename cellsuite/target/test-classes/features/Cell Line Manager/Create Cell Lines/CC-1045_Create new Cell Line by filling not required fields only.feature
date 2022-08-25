@@ -1,3 +1,4 @@
+@cellline
 @CC-1045_Create_new_Cell_Line_by_filling_not_required_fields_only
 Feature: CC-1045:Create new Cell Line by filling not required fields only
 
@@ -10,7 +11,7 @@ Feature: CC-1045:Create new Cell Line by filling not required fields only
     And user is navigated to "Dashboard" page
     When user clicks on menu "Cell Line"
     Then user is navigated to "Cell Line" page
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Cell Lines" page
 
     Scenario: Create New Cell Line
@@ -26,7 +27,7 @@ Feature: CC-1045:Create new Cell Line by filling not required fields only
     Then textbox "notes" will fill by "sample cell from mouse liver"
     When user "type" on box "Cell Density/cm2" as "9"
     Then box "Cell Density/cm2" filled by "9"
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then alert Required is displayed on bottom of box
     | Name | Media Selection | Media Replacement | Feeding Interval | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Estimated Doubling Time |
     And alert Required is displayed on bottom of "Passage After"

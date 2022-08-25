@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="54.194">
-    <testcase classname="CC-1080:Create new reagent" name="create new reagent item" time="53.782">
-        <failure message="Expected condition failed: waiting for visibility of all [] (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.3.0', revision: 'a4995e2c09*'&#10;System info: host: 'DESKTOP-SJM9DM9', ip: '10.250.9.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.101, chrome: {chromedriverVersion: 104.0.5112.79 (3cf3e8c8a07d..., userDataDir: C:\Users\smith\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:63861}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63861/devtoo..., se:cdpVersion: 104.0.5112.101, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: eb0fddc342043c469cdbf7a9fb501906" type="org.openqa.selenium.TimeoutException"><![CDATA[Given user has already logged in to application with this credentials.......passed
-And user is navigated to "Dashboard" page...................................passed
-When user clicks on menu "reagent"..........................................passed
-And user clicks on sub-menu "Library".......................................failed
-Then user is navigated to "Reagent Library" page............................skipped
-When user clicks on "create" button.........................................skipped
-Then user is navigated to "Create Reagent" page.............................skipped
-When user fill the form in Create Reagent page with this data...............skipped
-Then all fields in Create Reagent page is filled with this data.............skipped
-When user clicks on "save" button...........................................skipped
-And notification "Success" and "Reagent has been created" is displayed......skipped
-And there is "new" item "Reagent 1" created in table........................skipped
-When user clicks on menu "Reagent"..........................................skipped
-And user clicks on sub-menu "Culture Reagent"...............................skipped
-Then user is navigated to "Culture Reagent" page............................skipped
-And there is "no new" item "Reagent 1" created in table.....................skipped
-
-StackTrace:
-org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all [] (tried for 5 second(s) with 500 milliseconds interval)
-Build info: version: '4.3.0', revision: 'a4995e2c09*'
-System info: host: 'DESKTOP-SJM9DM9', ip: '10.250.9.69', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.101, chrome: {chromedriverVersion: 104.0.5112.79 (3cf3e8c8a07d..., userDataDir: C:\Users\smith\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:63861}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63861/devtoo..., se:cdpVersion: 104.0.5112.101, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: eb0fddc342043c469cdbf7a9fb501906
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at stepDefinition.GeneralStep.user_clicks_on_sub_menu(GeneralStep.java:51)
-	at ✽.user clicks on sub-menu "Library"(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Reagent%20Library/Create%20Reagent%20Library/CC-1080%20Create%20New%20Reagent.feature:13)
-]]></failure>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="30.242">
+    <testcase classname="login feature" name="login will success with valid credentials" time="9.274">
+        <system-out><![CDATA[Given user is on Login page.................................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "admin".........................................passed
+And user clicks on "SIGN IN" button.........................................passed
+Then user is navigated to "Dashboard" page..................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials" time="6.616">
+        <system-out><![CDATA[Given user is on Login page.................................................passed
+When user enters username as "admin"........................................passed
+And user enters password as "adminadmin"....................................passed
+And user clicks on "SIGN IN" button.........................................passed
+Then error notification "Incorrect Username or password" is displayed in Login page.passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 2" time="6.815">
+        <system-out><![CDATA[Given user is on Login page.................................................passed
+When user enters username as "admin"........................................passed
+And user clicks on "SIGN IN" button.........................................passed
+Then error validation "Please input your password!" is displayed in Login page.passed
+]]></system-out>
+    </testcase>
+    <testcase classname="login feature" name="login will not success with invalid credentials 3" time="6.968">
+        <system-out><![CDATA[Given user is on Login page.................................................passed
+When user enters password as "admin"........................................passed
+And user clicks on "SIGN IN" button.........................................passed
+Then error validation "Please input your username!" is displayed in Login page.passed
+]]></system-out>
     </testcase>
 </testsuite>

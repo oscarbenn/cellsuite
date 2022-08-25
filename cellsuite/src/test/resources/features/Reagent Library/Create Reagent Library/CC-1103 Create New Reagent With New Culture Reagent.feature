@@ -14,7 +14,7 @@ Feature: CC-1103:Create new reagent with new culture reagent
     Then user is navigated to "Reagent Library" page
 
     Scenario: Create new Reagent item
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -24,7 +24,7 @@ Feature: CC-1103:Create new reagent with new culture reagent
     |Reagent 2 Culture|Antibiotic|Create Reagent 2 with Antibiotic|
     When user clicks to check on "Create culture reagent" checkbox
     Then checkbox "Create culture reagent" is checked
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Reagent has been created" is displayed
     And There is new "culture reagent" item created with "100%" composition named as "Reagent 2 Culture"
 

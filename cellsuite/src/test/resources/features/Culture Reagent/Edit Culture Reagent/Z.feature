@@ -1,5 +1,5 @@
 @reagentculture
-@z
+@Z
 Feature: delete Reagent 7.0 Culture, 8.0, 9.0
 
     Feature Description
@@ -26,7 +26,7 @@ Feature: delete Reagent 7.0 Culture, 8.0, 9.0
     Then item "Reagent 9.0 Culture" is checked
     When user clicks on "delete" icon
     Then modal "Delete Culture Reagent" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagents has been deleted" is displayed
     And "Reagent 7.0 Culture" items is "not" exist
     And "Reagent 8.0 Culture" items is "not" exist

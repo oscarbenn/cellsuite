@@ -9,20 +9,22 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/features/",
     glue = {"stepDefinition"},
-    // tags = "@usermanagement",
-    // tags = "@reagentlibrary",
-    // tags = "@reagentculture",
-    tags = "@CC-1080_Create_new_Reagent",
+    tags = "@usermanagement",
+    // tags = "@reagentlibrary", // and @Z or @A
+    // tags = "@CC-1080_Create_new_Reagent",
     // tags = "@CC-1103_Create_new_reagent_with_new_culture_reagent",
     // tags = "@CC-1128_Edit_one_reagent_item",
     // tags = "@CC-1130_Edit_multiple_reagent_item",
-    // tags = "@CC-1043_Create_new_Cell_Line_by_filling_all_fields",
     // tags = "@CC-1105_Delete_one_reagent_item",
     // tags = "@CC-1106_Delete_multiple_reagent_item",
+
+    // tags = "@reagentculture", // and @Z or @A
     // tags = "@CC-1102_Create_new_Culture_Reagent",
+    // tags = "@CC-1110_Delete_One_Culture_Reagent",
     // tags = "@CC-1132_Edit_One_Culture_Reagent_Item",
     // tags = "@CC-1131_Edit_Multiple_Culture_Reagent_Item",
 
+    // tags = "@cellline and @Z", // and @Z or @A
     // tags = "@CC-1043_Create_new_Cell_Line_by_filling_all_fields",
     // tags = "@CC-1044_Create_new_Cell_Line_by_filling_required_fields_only",
     // tags = "@CC-1045_Create_new_Cell_Line_by_filling_not_required_fields_only",
@@ -41,6 +43,12 @@ import io.cucumber.junit.CucumberOptions;
     // tags = "@CC-1119_Change_from_Time_Interval_with_Imaging_Interval_to_Confluency",
     // tags = "@CC-1121_Change_Passage_After_Confluency_into_Time_Interval_with_Imaging_Interval",
     // tags = "@CC-1125_Change_Passage_After_Confluency_into_Time_Interval_without_Imaging_Interval",
+
+    // tags = "@CC-1134_User_registering_empty_trough",
+    // tags = "@CC-1142_User_registering_empty_counting_plate",
+    // tags = "@CC-1143_User_register_multiple_empty_96_Wells_plate",
+    // tags = "@CC-1144_User_register_single_empty_one_Well_plate",
+    // tags = "@CC-1152_User_register_microplate_with_content",
 
     monochrome = false,
     plugin = {"pretty", "html:target/htmlReport/reports.html",

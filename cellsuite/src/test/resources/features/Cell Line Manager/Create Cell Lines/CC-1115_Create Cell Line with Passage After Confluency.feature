@@ -1,5 +1,6 @@
+@cellline
 @CC-1115_Create_Cell_Line_with_Passage_After_Confluency
-Feature: CRUD Cell Line
+Feature: CC-1115:Create Cell Line with Passage After Confluency
 
     this feature to check functionality of CRUD Cell Line
     
@@ -10,7 +11,7 @@ Feature: CRUD Cell Line
     And user is navigated to "Dashboard" page
     When user clicks on menu "Cell Line"
     Then user is navigated to "Cell Line" page
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Cell Lines" page
 
     Scenario: Create New Cell Line
@@ -37,7 +38,7 @@ Feature: CRUD Cell Line
     Then modal "Select Media Selection" confirmation is displayed
     When user choose item "DMEM FBS 10" in modal select
     Then "DMEM FBS 10" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Media Selection" filled by "DMEM FBS 10"
     
     When user select "100%" on Media Replacement persentage
@@ -49,7 +50,7 @@ Feature: CRUD Cell Line
     Then modal "Select Detachment Selection" confirmation is displayed
     When user choose item "Trypsin" in modal select
     Then "Trypsin" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Detachment Reagent" filled by "Trypsin"
     
     When user "type" on box "Detachment Reagent Volume" as "600"
@@ -70,10 +71,10 @@ Feature: CRUD Cell Line
     When user "type" on box Cell Dye Ratio as "1" to "1"
     Then box Cell Dye Ratio filled by "1" to "1"
 
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Cell Lines has been created" is displayed
     And user is navigated to "Cell Line" page
     When user clicks detail button of item "my cell 3"
-    And user validating data new cell line
+    Then data new cell line will show
     | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
     | my cell 3 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |

@@ -1,5 +1,6 @@
-@reagentlibrary
-Feature: delete reagent 1.0,,6.0,7.0, reagent 2 culture
+@reagentlibrary 
+@Z
+Feature: CC-9999: clean
 
     Background: User is on Reagent menu
     Given user has already logged in to application with this credentials
@@ -20,7 +21,7 @@ Feature: delete reagent 1.0,,6.0,7.0, reagent 2 culture
     Then item "Reagent 7.0" is checked 
     When user clicks on "delete" icon
     Then modal "Delete reagents" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagents has been deleted" is displayed
 
     When user refresh the browser page
@@ -34,9 +35,8 @@ Feature: delete reagent 1.0,,6.0,7.0, reagent 2 culture
     And icon "delete" is enabled in page
     When user clicks on "delete" icon
     Then modal "Delete Culture Reagent" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagents has been deleted" is displayed
-
     When user refresh the browser page
     And user is navigated to "Dashboard" page
     When user clicks on menu "Reagent"
@@ -47,6 +47,6 @@ Feature: delete reagent 1.0,,6.0,7.0, reagent 2 culture
     And icon "delete" is enabled in page
     When user clicks on "delete" icon
     Then modal "Delete reagents" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagents has been deleted" is displayed
 

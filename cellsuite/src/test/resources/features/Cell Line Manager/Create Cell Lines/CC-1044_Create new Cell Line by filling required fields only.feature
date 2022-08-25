@@ -1,3 +1,4 @@
+@cellline
 @CC-1044_Create_new_Cell_Line_by_filling_required_fields_only
 Feature: CC-1044:Create new Cell Line by filling required fields only
 
@@ -10,7 +11,7 @@ Feature: CC-1044:Create new Cell Line by filling required fields only
     And user is navigated to "Dashboard" page
     When user clicks on menu "Cell Line"
     Then user is navigated to "Cell Line" page
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Cell Lines" page
 
     Scenario: Create New Cell Line
@@ -26,7 +27,7 @@ Feature: CC-1044:Create new Cell Line by filling required fields only
     Then modal "Select Media Selection" confirmation is displayed
     When user choose item "DMEM FBS 10" in modal select
     Then "DMEM FBS 10" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Media Selection" filled by "DMEM FBS 10"
     
     When user select "100%" on Media Replacement persentage
@@ -38,7 +39,7 @@ Feature: CC-1044:Create new Cell Line by filling required fields only
     Then modal "Select Detachment Selection" confirmation is displayed
     When user choose item "Trypsin" in modal select
     Then "Trypsin" item is selected in the modal
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then select box "Detachment Reagent" filled by "Trypsin"
 
     When user "type" on box "Detachment Reagent Volume" as "600"
@@ -57,10 +58,10 @@ Feature: CC-1044:Create new Cell Line by filling required fields only
     When user "type" on box Cell Dye Ratio as "1" to "1"
     Then box Cell Dye Ratio filled by "1" to "1"
 
-    When user clicks on "save" button
+    When user clicks on "Save" button
     Then notification "Success" and "Cell Lines has been created" is displayed
     And user is navigated to "Cell Line" page
     When user clicks detail button of item "my cell 2"
-    And user validating data new cell line
+    Then data new cell line will show
     | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
     | my cell 2 | - | - | - | - | - | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | x104 | 1 | 1 |

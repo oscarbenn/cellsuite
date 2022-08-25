@@ -33,6 +33,7 @@ public class CreateReagentCulturePage {
     }
 
     public void chooseComposition(String composition, String persen) {
+        wait.until(ExpectedConditions.elementToBeClickable(select_composition));
         select_composition.click();
         List<WebElement> opsi = driver.findElements(By.xpath("//table/tbody/tr/td[2]"));
         for (int i = 0; i < opsi.size(); i++) {

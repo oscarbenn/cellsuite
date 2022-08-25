@@ -22,9 +22,9 @@ Feature: CC-1128:Edit one reagent item
     Then user is navigated to "Edit Reagent" page
     When user "change" "Reagent 1.0" in "name" textbox
     And user "change" "Reagent 1.0 with Antibiotic" in "notes" textbox
-    And user clicks on "save" button
+    And user clicks on "Save" button
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Reagent has been updated" is displayed
     And item "Reagent 1" change to be "Reagent 1.0"
     And user is navigated to "Reagent Library" page

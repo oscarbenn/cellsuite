@@ -1,5 +1,6 @@
 @reagentlibrary
-Feature: Create reagent 3-7
+@A
+Feature: CC-0000: prekondisi
 
     This test case is to make sure the user could create new Reagent item
 
@@ -13,7 +14,7 @@ Feature: Create reagent 3-7
     Then user is navigated to "Reagent Library" page
 
     Scenario: create new reagent item
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -21,10 +22,10 @@ Feature: Create reagent 3-7
     Then all fields in Create Reagent page is filled with this data
     |nama|type|note|
     |Reagent 3|Antibiotic|Create Reagent 3 with Antibiotic|
-    When user clicks on "save" button
+    When user clicks on "Save" button
     And notification "Success" and "Reagent has been created" is displayed
     
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -32,10 +33,10 @@ Feature: Create reagent 3-7
     Then all fields in Create Reagent page is filled with this data
     |nama|type|note|
     |Reagent 4|Antibiotic|Create Reagent 4 with Antibiotic|
-    When user clicks on "save" button
+    When user clicks on "Save" button
     And notification "Success" and "Reagent has been created" is displayed
 
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -43,10 +44,10 @@ Feature: Create reagent 3-7
     Then all fields in Create Reagent page is filled with this data
     |nama|type|note|
     |Reagent 5|Antibiotic|Create Reagent 5 with Antibiotic|
-    When user clicks on "save" button
+    When user clicks on "Save" button
     And notification "Success" and "Reagent has been created" is displayed
 
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -54,10 +55,10 @@ Feature: Create reagent 3-7
     Then all fields in Create Reagent page is filled with this data
     |nama|type|note|
     |Reagent 6|Antibiotic|Create Reagent 6 with Antibiotic|
-    When user clicks on "save" button
+    When user clicks on "Save" button
     And notification "Success" and "Reagent has been created" is displayed
 
-    When user clicks on "create" button
+    When user clicks on "Create" button
     Then user is navigated to "Create Reagent" page
     When user fill the form in Create Reagent page with this data
     |nama|type|note|
@@ -65,5 +66,5 @@ Feature: Create reagent 3-7
     Then all fields in Create Reagent page is filled with this data
     |nama|type|note|
     |Reagent 7|Antibiotic|Create Reagent 7 with Antibiotic|
-    When user clicks on "save" button
+    When user clicks on "Save" button
     And notification "Success" and "Reagent has been created" is displayed

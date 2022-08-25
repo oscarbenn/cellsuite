@@ -16,32 +16,44 @@ public class DriverFactory {
     public WebDriver driver;
     public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>(); 
 
-    public WebDriver init_driver(String browser){
-        System.out.println("browser value is: " + browser);
-        if (browser.equals("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            // threadLocalDriver.set(new ChromeDriver());
-            threadLocalDriver.set(new ChromeDriver(options));
+    public WebDriver init_driver(String browser, String option){
+        System.out.println("browser value is: " + browser + option);
+        if (option.equals("headless")) {
+            if (browser.equals("chrome")) {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                threadLocalDriver.set(new ChromeDriver(options));
+            } else if (browser.equals("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
+                threadLocalDriver.set(new FirefoxDriver());
+            } else if (browser.equals("edge")) {
+                WebDriverManager.edgedriver().setup();
+                threadLocalDriver.set(new EdgeDriver());
+            } else {
+                System.out.println("Please pass the correct browser value: " + browser);
+            }
 
+            Dimension window = new Dimension(1920, 1080);
+            getDriver().manage().window().setSize(window);
 
-        } else if (browser.equals("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            threadLocalDriver.set(new FirefoxDriver());
-        } else if (browser.equals("edge")) {
-            WebDriverManager.edgedriver().setup();
-            threadLocalDriver.set(new EdgeDriver());
         } else {
-			System.out.println("Please pass the correct browser value: " + browser);
-		}
+            if (browser.equals("chrome")) {
+                WebDriverManager.chromedriver().setup();
+                threadLocalDriver.set(new ChromeDriver());
+            } else if (browser.equals("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
+                threadLocalDriver.set(new FirefoxDriver());
+            } else if (browser.equals("edge")) {
+                WebDriverManager.edgedriver().setup();
+                threadLocalDriver.set(new EdgeDriver());
+            } else {
+                System.out.println("Please pass the correct browser value: " + browser);
+            }
+            getDriver().manage().window().maximize();
+        }
         
-        
-        Dimension window = new Dimension(1920, 1080);
-        getDriver().manage().window().setSize(window);
-
         getDriver().manage().deleteAllCookies();
-        // getDriver().manage().window().maximize();
         getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
         return getDriver();
@@ -49,7 +61,6 @@ public class DriverFactory {
     }
 
     public static synchronized WebDriver getDriver(){
-        System.out.println(threadLocalDriver.get());
         return threadLocalDriver.get();
     }
 }

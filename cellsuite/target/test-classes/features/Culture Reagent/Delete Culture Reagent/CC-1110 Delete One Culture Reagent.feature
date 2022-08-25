@@ -20,7 +20,7 @@ Feature: CC-1110:Delete One Culture Reagent
     And icon "delete" is enabled in page
     When user clicks on "delete" icon
     Then modal "Delete Culture Reagent" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagents has been deleted" is displayed
     And "Reagent 10 Culture" items is "not" exist
     When user refresh the browser page

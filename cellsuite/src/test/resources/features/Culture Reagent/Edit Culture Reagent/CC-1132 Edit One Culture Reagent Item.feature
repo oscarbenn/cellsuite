@@ -27,9 +27,9 @@ Feature: CC-1132: Edit One Culture Reagent Item
     Then composition reagent selected is "Trypsin" 
     And accepted total volume of reagent is "100"
 
-    And user clicks on "save" button
+    And user clicks on "Save" button
     Then modal "Save Confirm" confirmation is displayed
-    When user clicks on "OK" button in modal
+    When user clicks on "OK" button
     Then notification "Success" and "Culture Reagent has been updated" is displayed
     And user is navigated to "Culture Reagent" page
     # And reagent is updated and saved with name "Reagent 7.0" and note "Reagent 3.0 with Antibiotic"
