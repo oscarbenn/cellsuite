@@ -20,6 +20,7 @@ public class GeneralStep {
 
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    Actions actions = new Actions(DriverFactory.getDriver());
 
     @When("user refresh the browser page")
     public void user_refresh_the_browser_page() {
@@ -444,6 +445,7 @@ public class GeneralStep {
         for (int i = 0; i < opsi.size(); i++) {
             String label = opsi.get(i).getAttribute("label");
             if (label.equalsIgnoreCase(item)) {
+                actions.scrollToElement(opsi.get(i)).build().perform();
                 opsi.get(i).click();
                 break;
             }

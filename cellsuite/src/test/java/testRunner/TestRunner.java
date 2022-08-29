@@ -51,7 +51,7 @@ import io.cucumber.junit.CucumberOptions;
     // tags = "@CC-1141_User_registering_tip_caddy",
     // tags = "@CC-1142_User_registering_empty_counting_plate",
     // tags = "@CC-1143_User_register_multiple_empty_96_Wells_plate",
-    // tags = "@CC-1144_User_register_single_empty_one_Well_plate",
+    tags = "@CC-1144_User_register_single_empty_one_Well_plate",
     // tags = "@CC-1152_User_register_microplate_with_content",
     // tags = "@CC-1153_User_saving_without_completing_the_required_fields",
     // tags = "@CC-1154_User_cancel_register_labware",
@@ -66,7 +66,7 @@ import io.cucumber.junit.CucumberOptions;
 
     // tags = "@CC-1162_User_delete_single_unused_labware",
     // tags = "@CC-1163_User_delete_multiple_unused_labware",
-    tags = "@CC-1166_User_cancel_delete_labware",
+    // tags = "@CC-1166_User_cancel_delete_labware",
 
 
     monochrome = false,
