@@ -1,7 +1,6 @@
 package stepDefinition;
 import static org.junit.Assert.*;
 
-import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 
@@ -9,12 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.DriverFactory;
-import factory.Function;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 
@@ -26,6 +24,7 @@ public class GeneralStep {
     @When("user refresh the browser page")
     public void user_refresh_the_browser_page() {
         driver.navigate().refresh();        
+        
     }
 
     @Then("user is navigated to {string} page")
@@ -66,6 +65,14 @@ public class GeneralStep {
         buttonElement.click();
     }
 
+    @Then("{string} button is not appear")
+    public void button_is_not_appear(String button) {
+        List<WebElement> buttonElements = driver.findElements(By.xpath("//button"));
+        for (int i = 0; i < buttonElements.size(); i++) {
+            assertNotEquals(button, buttonElements.get(i).getText());
+        }
+    }
+
     @When("user clicks to check on {string} checkbox")
     public void user_clicks_to_check_on_checkbox(String checkbox) {
         WebElement checkElement = driver.findElement(By.xpath("//*[.='"+checkbox+"']/preceding-sibling::span")); //span[text()='"+checkbox+"']/parent::span/preceding-sibling::span
@@ -87,16 +94,54 @@ public class GeneralStep {
 
     @Then("icon {string} is enabled in page")
     public void icon_is_enabled_in_page(String icon) {
-        WebElement iconElement = driver.findElement(By.xpath("//span[@data-testid=\'"+icon+"-icon\']"));
-        // wait.until(ExpectedConditions.elementToBeClickable(iconElement));
-        wait.until(ExpectedConditions.attributeToBe(iconElement, "class", "anticon anticon-"+icon+""));
-        assertFalse(iconElement.getAttribute("class").contains("disabled"));
+        WebElement iconElement;
+        switch (icon) {
+            case "printer":
+                iconElement =driver.findElement(By.xpath("//span[@aria-label='"+icon+"']"));
+                assertFalse(iconElement.getAttribute("class").contains("disabled"));
+                break;
+        
+            default:
+                iconElement = driver.findElement(By.xpath("//span[@data-testid=\'"+icon+"-icon\']"));
+                // wait.until(ExpectedConditions.elementToBeClickable(iconElement));
+                wait.until(ExpectedConditions.attributeToBe(iconElement, "class", "anticon anticon-"+icon+""));
+                assertFalse(iconElement.getAttribute("class").contains("disabled"));
+                break;
+        }
+    }
+
+    @Then("icon {string} is disabled in or unavailable")
+    public void icon_is_disabled_in_or_unavailable(String icon) {
+        WebElement iconElement;
+        switch (icon) {
+            case "printer":
+                iconElement =driver.findElement(By.xpath("//span[@aria-label='"+icon+"']"));
+                assertTrue(iconElement.getAttribute("class").contains("disabled"));
+                break;
+        
+            default:
+                iconElement = driver.findElement(By.xpath("//span[@data-testid=\'"+icon+"-icon\']"));
+                // wait.until(ExpectedConditions.elementToBeClickable(iconElement));
+                wait.until(ExpectedConditions.attributeToBe(iconElement, "class", "anticon anticon-"+icon+""));
+                assertTrue(iconElement.getAttribute("class").contains("disabled"));
+                break;
+        }
     }
 
     @When("user clicks on {string} icon")
     public void user_clicks_on_icon(String icon) {
-        WebElement iconElement = driver.findElement(By.xpath("//*[@data-testid=\'"+icon+"-icon\']"));
-        iconElement.click();
+        WebElement iconElement;
+        switch (icon) {
+            case "printer":
+                iconElement =driver.findElement(By.xpath("//span[@aria-label='"+icon+"']"));
+                iconElement.click();
+                break;
+        
+            default:
+                iconElement = driver.findElement(By.xpath("//*[@data-testid=\'"+icon+"-icon\']"));
+                iconElement.click();
+                break;
+        }        
     }
 
     @When("user clicks on {string} button in modal")
@@ -119,7 +164,10 @@ public class GeneralStep {
         WebElement itemNameElement = driver.findElement(By.xpath("(//div[@data-testid='info-button']/parent::td/preceding-sibling::td[3])[1]"));
         if (condition.equalsIgnoreCase("no new")) {
             assertNotEquals(item, itemNameElement.getText());
-        } else {assertEquals(item, itemNameElement.getText());}
+        } else {
+            wait.until(ExpectedConditions.textToBe(By.xpath("(//div[@data-testid='info-button']/parent::td/preceding-sibling::td[3])[1]"), item));
+            assertEquals(item, itemNameElement.getText());
+        }
     }
 
     @When("user {string} {string} in {string} textbox")
@@ -182,11 +230,13 @@ public class GeneralStep {
     }
     @When("user select an item {string} by check the checkbox")
     public void user_select_an_item_by_check_the_checkbox(String itemName) {
+        Actions actions = new Actions(driver);
         List<WebElement> itemElements = driver.findElements(By.xpath("//table/tbody/tr"));
         for (int i = 1; i < itemElements.size(); i++) {
             WebElement nameItems = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[2]"));
             if (nameItems.getText().equals(itemName)) {
                 WebElement checkboxElement = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[1]"));
+                actions.moveToElement(driver.findElement(By.xpath("//table/tbody/tr[2]"))).perform();
                 wait.until(ExpectedConditions.elementToBeClickable(checkboxElement));
                 checkboxElement.click();
                 break;

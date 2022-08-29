@@ -1,25 +1,22 @@
-@CC-1155
-Feature: CC-1122:User registering multiple Pre-barcoded labwares
+@CC-1155_User_print_barcode_for_single_labware
+Feature: CC-1155:User print barcode for single labware
 
-    this feature to check functionality of Labware Inventory
-    Background: User has logged in on Cell Suite application and is on Labware Invenntory menu
-    Given user is navigated to website "http://localhost:5050"
-    Then user is navigated to "Login" page
-    Then user is navigated to "Login" page
-    When user enters "Username" as "admin"
-    Then "admin" is typed on "Username" textbox
-    When user enters "Password" as "admin"
-    Then "admin" is typed on "Password" textbox
-    And user clicks on "SIGN IN" button
-    Then user is navigated to "Dashboard" page
+    this feature to verify that system allowing user to print single labware barcode from the Invenntory main menu
+    
+    Background: User has logged in on Cell Suite application and is on Labware Invenntory page
+    Given user has already logged in to application with this credentials
+    |username|password|
+    |admin|admin|
+    And user is navigated to "Dashboard" page
     When user clicks on menu "Labware"
     And user clicks on sub-menu "Inventory"
     Then user is navigated to "Inventory" page
-    And data table show up
 
-    Scenario: CC-1122:User registering multiple Pre-barcoded labwares
-    When user click "1" labware
-    And user clicks on "print" icon button
+    Scenario: print barcode for single labware
+    When user clicks "1" labware with "Unknown" of "status"
+    Then icon "printer" is enabled in page
+    When user clicks on "printer" icon
+    Then notification "Success" and "Barcode has been printed" is displayed
 
 
 

@@ -1,6 +1,6 @@
 @cellline
 @A
-Feature: precondition for cellline feature
+Feature: CC-1042: prekondisi
 
     this feature to check functionality of CRUD Cell Line
 

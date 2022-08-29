@@ -1,30 +1,27 @@
-@CC-1154
+@CC-1154_User_cancel_register_labware
 Feature: CC-1154:User cancel register labware
 
-    this feature to check functionality of Labware Inventory
-    Background: User has logged in on Cell Suite application and is on Labware Invenntory menu
-    Given user is navigated to website "http://localhost:5050"
-    Then user is navigated to "Login" page
-    Then user is navigated to "Login" page
-    When user enters "Username" as "admin"
-    Then "admin" is typed on "Username" textbox
-    When user enters "Password" as "admin"
-    Then "admin" is typed on "Password" textbox
-    And user clicks on "SIGN IN" button
-    Then user is navigated to "Dashboard" page
+    this feature to verify that user can cancel registering labware
+
+    Background: User has logged in on Cell Suite application and is on Labware Invenntory page
+    Given user has already logged in to application with this credentials
+    |username|password|
+    |admin|admin|
+    And user is navigated to "Dashboard" page
     When user clicks on menu "Labware"
     And user clicks on sub-menu "Inventory"
     Then user is navigated to "Inventory" page
-    And data table show up
 
-    Scenario: User saving without completing the required fields
+    Scenario: User cancel registering labware
     When user clicks on "Register" button
     Then user is navigated to "Register Inventory" page
     When user select "Trough 250" in dropdown "Labware"
-    And user select "Empty" in dropdown "Content Type"
-    And user enters labware count "1"
-    And user select "Generate by system" on barcode radio box
-    And user enters "Some Notes" notes labware
-    And user clicks on "close" icon button
+    Then dropdown "Labware" is filled by "Trough 250"
+    When user select "Empty" in dropdown "Content Type"
+    Then dropdown "Content Type" is filled by "Empty"
+    And box "Labware Count" is "appear"
+    And "Labware Count" is filled by "1"
+    And radio "Generate by system" is selected
+    And user clicks on "close" icon
+    And modal "Back to Inventory Management Overview" confirmation is displayed
     And user clicks on "OK" button
-    And System "not show" new item "Trough 250" 

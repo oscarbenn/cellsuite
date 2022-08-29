@@ -25,9 +25,8 @@ Feature: CC-1152:User register microplate with content
     And "Create Content" menu is appear
     When user clicks on "Create Content" button
     Then dialog for defining "Add Content" is displayed
-    When user choose content "HeLa" and fill volume "150"
-    Then content selected as "Hela" and volume displayed as "150"  
-
+    When user choose content "HeLa" and fill volume "150" and clicks on well image
+    Then content selected as "HeLa" and volume displayed as "150" and image well is colored
 
     And user clicks on "OK" button
     And user clicks on "Save" button

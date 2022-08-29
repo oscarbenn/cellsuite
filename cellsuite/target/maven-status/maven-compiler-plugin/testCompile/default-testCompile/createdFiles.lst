@@ -4,6 +4,7 @@ stepDefinition\GeneralStep.class
 pageObject\reagent\ReagentLibrary\CreateReagentLibraryPage.class
 pageObject\DashboardPage.class
 factory\DriverFactory.class
+stepDefinition\LabwareInventoryStep.class
 pageObject\reagent\ReagentLibrary\ReagentLibraryPage.class
 stepDefinition\LoginPageStep.class
 factory\ConfigReader.class

@@ -1,6 +1,6 @@
 @reagentculture
 @A
-Feature: create reagent culture 7-9
+Feature: CC-1101: prekondisi
 
     Background: User is on Reagent Culture menu
     Given user has already logged in to application with this credentials

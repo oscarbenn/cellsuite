@@ -23,15 +23,17 @@ Feature: CC-1142:User registering empty counting plate
     Then dropdown "Labware" is filled by "CP 24 Wells"
     And user select "Empty" in dropdown "Content Type"
     Then dropdown "Content Type" is filled by "Empty"
-    When user fill on Labware Count as "1"
-    Then Labware Count is filled by "1"
-    When user select "Generate by system" radio
-    Then radio "Generate by system" is selected
-    When user type "CP 24 Wells Empty" in notes textbox
-    Then textbox notes is filled by "CP 24 Wells Empty"
+    # When user fill on "Labware Count" as "1"
+    # Then "Labware Count" is filled by "1"
+    # When user select "Generate by system" radio
+    # Then radio "Generate by system" is selected
+    # When user type "CP 24 Wells Empty" in notes textbox
+    # Then textbox notes is filled by "CP 24 Wells Empty"
     And user clicks on "Save" button
     Then notification "Success" and "Labware has been registered" is displayed
     And modal "Save Labware" confirmation is displayed
     When user clicks button OK in modal Save Labware
     Then user is navigated to "Inventory" page
-    And there is new item "CP 24 Wells" created in table with empty exp date
+    And There is new "1" data with this condition
+    | Labware Name | ContentType | Exp Date | Location | Status |
+    | CP 24 Wells | Empty | - | Outside of the System | Unknown |

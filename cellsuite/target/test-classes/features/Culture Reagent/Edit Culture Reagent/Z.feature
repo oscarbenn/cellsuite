@@ -1,6 +1,6 @@
 @reagentculture
 @Z
-Feature: delete Reagent 7.0 Culture, 8.0, 9.0
+Feature: CC-1133: clean
 
     Feature Description
 

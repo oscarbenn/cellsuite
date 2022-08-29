@@ -1,6 +1,6 @@
 @Z
 @cellline
-Feature: delete items my cell 2,6,1.0 edit,7.0 edit,8.1 edit
+Feature: CC-1126: clean delete items my cell 2,6,1.0 edit,7.0 edit,8.1 edit
 
     this feature to clean item
     

@@ -23,6 +23,10 @@ public class DriverFactory {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--window-size=1920,1080");
                 threadLocalDriver.set(new ChromeDriver(options));
             } else if (browser.equals("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
@@ -34,8 +38,8 @@ public class DriverFactory {
                 System.out.println("Please pass the correct browser value: " + browser);
             }
 
-            Dimension window = new Dimension(1920, 1080);
-            getDriver().manage().window().setSize(window);
+            // Dimension window = new Dimension(1920, 1080);
+            // getDriver().manage().window().setSize(window);
 
         } else {
             if (browser.equals("chrome")) {
@@ -54,6 +58,7 @@ public class DriverFactory {
         }
         
         getDriver().manage().deleteAllCookies();
+        getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
         getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
         return getDriver();

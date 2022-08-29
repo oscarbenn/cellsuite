@@ -29,5 +29,6 @@ Feature: CC-1144:User register single empty one Well plate
     And modal "Save Labware" confirmation is displayed
     When user clicks button OK in modal Save Labware
     Then user is navigated to "Inventory" page
-    And there is new item "SBS One Well" created in table with empty exp date
-    
+    And There is new "1" data with this condition
+    | Labware Name | ContentType | Exp Date | Location | Status |
+    | SBS One Well | Empty | - | Outside of the System | Unknown |
