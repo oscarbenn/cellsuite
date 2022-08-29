@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="16.748">
-    <testcase classname="CC-1160:User attempt to print barcode while registering labware as prebarcoded" name="User print barcode while registering labwaregh" time="15.959">
-        <system-out><![CDATA[Given user has already logged in to application with this credentials.......passed
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="29.832">
+    <testcase classname="CC-1166:User cancel delete labware" name="deleting single unused labware" time="29.05">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception"><![CDATA[Given user has already logged in to application with this credentials.......passed
 And user is navigated to "Dashboard" page...................................passed
 When user clicks on menu "Labware"..........................................passed
 And user clicks on sub-menu "Inventory".....................................passed
 Then user is navigated to "Inventory" page..................................passed
-When user clicks on "Register" button.......................................passed
-Then user is navigated to "Register Inventory" page.........................passed
-When user select "Trough 250" in dropdown "Labware".........................passed
-Then dropdown "Labware" is filled by "Trough 250"...........................passed
-When user select "Empty" in dropdown "Content Type".........................passed
-Then dropdown "Content Type" is filled by "Empty"...........................passed
-And "Labware Count" is filled by "1"........................................passed
-Then radio "Generate by system" is selected.................................passed
-When user select "Prebarcoded" radio........................................passed
-Then radio "Prebarcoded" is selected........................................passed
-And box "Labware Count" is "disabled".......................................passed
-When user choose Storage Location colnum "6" rownum "8".....................passed
-Then Storage Location colnum "6" rownum "8" is filled with "Selected" color.passed
-And "Labware Count" is filled by "1"........................................passed
-Then "Save & Print Barcode" button is not appear............................passed
-]]></system-out>
+When user clicks "1" labware with "Unknown" of "status".....................passed
+When user click on more icon button and click " Delete" menu................passed
+Then modal "Delete Labware" confirmation is displayed.......................passed
+And user clicks on "Cancel" button..........................................passed
+Then modal confirmation is closed...........................................undefined
+]]></failure>
     </testcase>
 </testsuite>

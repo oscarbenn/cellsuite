@@ -1,21 +1,20 @@
-@CC-1166
+@CC-1166_User_cancel_delete_labware
 Feature: CC-1166:User cancel delete labware
 
-    this feature to check functionality of Labware Inventory
-    Background: User has logged in on Cell Suite application and is on Labware Invenntory menu
-    Given user is navigated to website "http://localhost:5050"
-    Then user is navigated to "Login" page
-    Then user is navigated to "Login" page
-    When user enters "Username" as "admin"
-    Then "admin" is typed on "Username" textbox
-    When user enters "Password" as "admin"
-    Then "admin" is typed on "Password" textbox
-    And user clicks on "SIGN IN" button
-    Then user is navigated to "Dashboard" page
+    this feature to verify that system allowing user to cancel deleting labware
+
+    Background: User has logged in on Cell Suite application and is on Labware Invenntory page
+    Given user has already logged in to application with this credentials
+    |username|password|
+    |admin|admin|
+    And user is navigated to "Dashboard" page
     When user clicks on menu "Labware"
     And user clicks on sub-menu "Inventory"
     Then user is navigated to "Inventory" page
-    And data table show up
 
-    Scenario: CC-1155:User print barcode for single labware
-    When user check labware with "Unknown" barcode
+    Scenario: deleting single unused labware
+    When user clicks "1" labware with "Unknown" of "status"
+    When user click on more icon button and click " Delete" menu
+    Then modal "Delete Labware" confirmation is displayed
+    And user clicks on "Cancel" button
+    Then modal confirmation is closed

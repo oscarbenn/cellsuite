@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,6 +30,7 @@ public class LabwareInventoryStep {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     SoftAssertions softAssertions = new SoftAssertions();
     LabwareInventoryPage labwareInventoryPage = new LabwareInventoryPage(DriverFactory.getDriver());
+    Actions actions = new Actions(DriverFactory.getDriver());
 
     int items;
 
@@ -217,6 +219,19 @@ public class LabwareInventoryStep {
             default:
                 break;
         }
+    }
+
+    @When("user click on more icon button and click {string} menu")
+    public void user_click_on_more_icon_button_and_click_menu(String opsi) {
+        actions.moveToElement(driver.findElement(By.xpath("//div[@class='header-popover']"))).perform();
+        WebElement target = driver.findElement(By.xpath("//li[@role='menuitem']/span[text()='"+opsi+"']"));
+        wait.until(ExpectedConditions.visibilityOf(target));
+        actions.moveToElement(target).click().release().build().perform();
+    }
+
+    @Then("modal confirmation is closed")
+    public void modal_confirmation_is_closed() {
+        
     }
 
     

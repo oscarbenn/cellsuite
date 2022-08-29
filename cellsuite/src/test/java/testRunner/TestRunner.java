@@ -61,8 +61,13 @@ import io.cucumber.junit.CucumberOptions;
     // tags = "@CC-1157_User_print_barcode_while_registering_labware",
     // tags = "@CC-1159_User_attempt_to_print_barcode_for_the_prebarcoded_labware",
 
-    tags = "@CC-1160_User_attempt_to_print_barcode_while_registering_labware_as_prebarcoded",
+    // tags = "@CC-1160_User_attempt_to_print_barcode_while_registering_labware_as_prebarcoded",
     // tags = "@CC-1161_User_attemtp_to_print_prebarcoded_and_non-prebarcoded_labware_at_once",
+
+    // tags = "@CC-1162_User_delete_single_unused_labware",
+    // tags = "@CC-1163_User_delete_multiple_unused_labware",
+    tags = "@CC-1166_User_cancel_delete_labware",
+
 
     monochrome = false,
     plugin = {"pretty", "html:target/htmlReport/reports.html",

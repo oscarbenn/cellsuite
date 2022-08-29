@@ -12,10 +12,14 @@ Feature: CC-1162:User delete single unused labware
     And user clicks on sub-menu "Inventory"
     Then user is navigated to "Inventory" page
 
-    Scenario: deleting unused labware
-    When user check labware with "Delete001" barcode
-    Then labware with "Delete001" barcode is checked
-    When user click on more icon button and click "Delete" menu
+    Scenario: deleting single unused labware
+    When user clicks "1" labware with "Unknown" of "status"
+    When user click on more icon button and click " Delete" menu
+    Then modal "Delete Labware" confirmation is displayed
+    And user clicks on "OK" button
+    Then notification "Success" and "Inventories has been deleted" is displayed
+
+
     
 
 
