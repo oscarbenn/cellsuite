@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="20.069">
-    <testcase classname="CC-1144:User register single empty one Well plate" name="User register single empty 1 Well plate" time="19.377">
-        <failure message="expected:&lt;[SBS One Well]&gt; but was:&lt;[]&gt;" type="org.junit.ComparisonFailure"><![CDATA[Given user has already logged in to application with this credentials.......passed
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="16.87">
+    <testcase classname="CC-1080:Create new reagent" name="create new reagent item" time="15.956">
+        <failure message="expected:&lt;[Success]&gt; but was:&lt;[One or more validation errors occurred.]&gt;" type="org.junit.ComparisonFailure"><![CDATA[Given user has already logged in to application with this credentials.......passed
 And user is navigated to "Dashboard" page...................................passed
-When user clicks on menu "Labware"..........................................passed
+When user clicks on menu "Reagent"..........................................passed
 And user clicks on sub-menu "Library".......................................passed
-Then user is navigated to "Labware Library" page............................passed
-And "SBS One Well" items is "already" exist.................................passed
-And user clicks on sub-menu "Inventory".....................................passed
-Then user is navigated to "Inventory" page..................................passed
-When user clicks on "Register" button.......................................passed
-Then user is navigated to "Register Inventory" page.........................passed
-When user select "SBS One Well" in dropdown "Labware".......................passed
-Then dropdown "Labware" is filled by "SBS One Well".........................passed
-And user select "Empty" in dropdown "Content Type"..........................passed
-Then dropdown "Content Type" is filled by "Empty"...........................passed
-When user select "Generate by system" radio.................................passed
-Then radio "Generate by system" is selected.................................passed
-And user clicks on "Save" button............................................passed
-Then notification "Success" and "Labware has been registered" is displayed..passed
-And modal "Save Labware" confirmation is displayed..........................passed
-When user clicks button OK in modal Save Labware............................passed
-Then user is navigated to "Inventory" page..................................passed
-And There is new "1" data with this condition...............................failed
+Then user is navigated to "Reagent Library" page............................passed
+When user clicks on "Create" button.........................................passed
+Then user is navigated to "Create Reagent" page.............................passed
+When user fill the form in Create Reagent page with this data...............passed
+Then all fields in Create Reagent page is filled with this data.............passed
+When user clicks on "Save" button...........................................passed
+And notification "Success" and "Reagent has been created" is displayed......failed
+And there is "new" item "Reagent 1" created in table........................skipped
+When user clicks on menu "Reagent"..........................................skipped
+And user clicks on sub-menu "Culture Reagent"...............................skipped
+Then user is navigated to "Culture Reagent" page............................skipped
+And there is "no new" item "Reagent 1" created in table.....................skipped
 
 StackTrace:
-org.junit.ComparisonFailure: expected:<[SBS One Well]> but was:<[]>
+org.junit.ComparisonFailure: expected:<[Success]> but was:<[One or more validation errors occurred.]>
 	at org.junit.Assert.assertEquals(Assert.java:117)
 	at org.junit.Assert.assertEquals(Assert.java:146)
-	at stepDefinition.LabwareInventoryStep.there_is_new_data_with_this_condition(LabwareInventoryStep.java:174)
-	at ✽.There is new "1" data with this condition(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Labware%20Manager/Labware%20Inventory/Create,%20Register%20and%20Install%20Labware/CC-1144_User%20register%20single%20empty%201%20Well%20plate.feature:32)
+	at stepDefinition.GeneralStep.notification_and_is_displayed(GeneralStep.java:158)
+	at ✽.notification "Success" and "Reagent has been created" is displayed(file:///C:/Users/smith/OneDrive/Documents/INTERN/Cell/cellsuite/cellsuite/src/test/resources/features/Reagent%20Library/Create%20Reagent%20Library/CC-1080%20Create%20New%20Reagent.feature:26)
 ]]></failure>
     </testcase>
 </testsuite>

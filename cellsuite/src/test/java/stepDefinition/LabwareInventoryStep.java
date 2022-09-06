@@ -25,7 +25,6 @@ import pageObject.labware.LabwareInventoryPage;
 
 public class LabwareInventoryStep {
     
-
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     SoftAssertions softAssertions = new SoftAssertions();
@@ -118,7 +117,7 @@ public class LabwareInventoryStep {
         softAssertions.assertThat(expectedColor).isEqualTo(actualColor);
         // assertEquals(expectedColor, actual);
         assertEquals(volume+"µL", wellImage.getText()); 
-        
+        softAssertions.assertAll();
     }  
 
     @Then("dialog for defining {string} is displayed")
@@ -155,7 +154,6 @@ public class LabwareInventoryStep {
         assertTrue(storageLocation.getAttribute("class").contains("selected"));
         // assertEquals(colorElement.getCssValue("background-color"), storageLocation.getCssValue("background-color"));
         softAssertions.assertThat(colorElement.getCssValue("background-color")).isEqualTo(storageLocation.getCssValue("background-color"));
-        
     }
     @Then("There is new {string} data with this condition")
     public void there_is_new_data_with_this_condition(String number, DataTable data) {
@@ -191,6 +189,7 @@ public class LabwareInventoryStep {
     @Then("error required text on {string} is displayed")
     public void error_required_text_on_is_displayed(String box) {
         WebElement alertElement = driver.findElement(By.xpath("//label[@title='"+box+"']/parent::div/following-sibling::div/div[2]"));
+        wait.until(ExpectedConditions.visibilityOf(alertElement));
         assertTrue(alertElement.isDisplayed());
     }
 

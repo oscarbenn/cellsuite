@@ -74,9 +74,9 @@ Feature: CC-1042: prekondisi
     Then notification "Success" and "Cell Lines has been created" is displayed
     And user is navigated to "Cell Line" page
     When user clicks detail button of item "my cell 6"
-    Then data new cell line will show
-    | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
-    | my cell 6 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
+    # Then data new cell line will show
+    # | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
+    # | my cell 6 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
 
     When user clicks on "Create" button
     Then user is navigated to "Create Cell Lines" page
@@ -143,9 +143,9 @@ Feature: CC-1042: prekondisi
     Then notification "Success" and "Cell Lines has been created" is displayed
     And user is navigated to "Cell Line" page
     When user clicks detail button of item "my cell 7"
-    Then data new cell line will show
-    | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
-    | my cell 7 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 24 hour(s) | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
+    # Then data new cell line will show
+    # | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
+    # | my cell 7 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 24 hour(s) | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
 
 
     When user clicks on "Create" button
@@ -211,6 +211,6 @@ Feature: CC-1042: prekondisi
     Then notification "Success" and "Cell Lines has been created" is displayed
     And user is navigated to "Cell Line" page
     When user clicks detail button of item "my cell 8"
-    Then data new cell line will show
-    | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
-    | my cell 8 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |
+    # Then data new cell line will show
+    # | Name | Organism | Tissue | Morphology | Disease | Notes | Passage After | Media Selection | Media Replacement | Detachment Reagent | Detachment Reagent Volume | Detachment Reagent Incubation Time | Passage Ratio | Adhering Time | Using Imaging | Estimated Doubling Time | Cell Density/cm2 | Cell Dilution Ratio | Dye Dilution Ratio |
+    # | my cell 8 | Mouse | Embryo | Fibroblast | mimic human liver | sample cell from mouse liver | 80% Confluency | DMEM FBS 10 | 100% | Trypsin | 600.0 µL | 15 minute(s) | 1 : 3 | 6 hour(s) | Yes | 48 hour(s) | 90000 x104 | 1 | 1 |

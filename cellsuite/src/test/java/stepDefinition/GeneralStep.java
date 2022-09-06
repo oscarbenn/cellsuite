@@ -19,13 +19,12 @@ import io.cucumber.java.en.*;
 public class GeneralStep {
 
     WebDriver driver = DriverFactory.getDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     Actions actions = new Actions(DriverFactory.getDriver());
 
     @When("user refresh the browser page")
     public void user_refresh_the_browser_page() {
         driver.navigate().refresh();        
-        
     }
 
     @Then("user is navigated to {string} page")
@@ -163,6 +162,7 @@ public class GeneralStep {
     @Then("there is {string} item {string} created in table")
     public void there_is_item_created_in_table(String condition,String item) {
         WebElement itemNameElement = driver.findElement(By.xpath("(//div[@data-testid='info-button']/parent::td/preceding-sibling::td[3])[1]"));
+        
         if (condition.equalsIgnoreCase("no new")) {
             assertNotEquals(item, itemNameElement.getText());
         } else {
@@ -174,13 +174,13 @@ public class GeneralStep {
     @When("user {string} {string} in {string} textbox")
     public void user_in_textbox(String action, String fill, String textbox){
         WebElement textboxElement = driver.findElement(By.xpath("//*[@id='basic_"+textbox+"']")); //*[@data-testid='"+textbox+"']    |    //*[text()='"+label+"']/parent::div/parent::div/child::div[2]/child::div/child::div/child::span/child::input
+        wait.until(ExpectedConditions.visibilityOf(textboxElement));
         wait.until(ExpectedConditions.elementToBeClickable(textboxElement));
         switch (action) {
             case "type":
                 textboxElement.sendKeys(fill);
                 break;
             case "change":
-                wait.until(ExpectedConditions.elementToBeClickable(textboxElement));
                 textboxElement.click();
                 textboxElement.sendKeys(Keys.CONTROL+"A");
                 textboxElement.sendKeys(Keys.BACK_SPACE);
@@ -392,7 +392,7 @@ public class GeneralStep {
     public void data_new_cell_line_will_show(DataTable datas) {
         List<String> type = datas.row(0);
         List<String> content = datas.row(1);
-        WebElement detailElement = driver.findElement(By.xpath("//div[@class='detail-container']"));
+        WebElement detailElement = driver.findElement(By.xpath("//div[@class='detail-container']/div/div[contains(.,'"+type.get(0)+"')]/following-sibling::div[2]"));
         wait.until(ExpectedConditions.visibilityOf(detailElement));
         for (int i = 0; i < type.size(); i++) {
             String dataType = type.get(i);

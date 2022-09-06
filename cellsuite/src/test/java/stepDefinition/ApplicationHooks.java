@@ -47,10 +47,17 @@ public class ApplicationHooks {
 
     @After(order = 1)
     public void tearDown(Scenario scenario) throws IOException{
+        String screenshot = prop.getProperty("screenshot");
         if (scenario.isFailed()) {
-            String screenshotName = scenario.getName();
-            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("output/screenshot/"+screenshotName+".png"));
+            if (screenshot.equalsIgnoreCase("report")) {
+                String screenshotName = scenario.getName().replaceAll(" ", "_");
+                byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(sourcePath, "image/png", screenshotName);
+            } else {
+                String screenshotName = scenario.getName();
+                File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(scrFile, new File("output/screenshot/"+screenshotName+".png"));
+            }
         }
     }
 }

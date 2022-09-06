@@ -9,9 +9,10 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/features/",
     glue = {"stepDefinition"},
+    // tags = "not (@usermanagement or @reagentlibrary or @reagentculture or @cellline)",
     // tags = "@usermanagement",
     // tags = "@reagentlibrary", // and @Z or @A
-    // tags = "@CC-1080_Create_new_Reagent",
+    tags = "@CC-1080_Create_new_Reagent",
     // tags = "@CC-1103_Create_new_reagent_with_new_culture_reagent",
     // tags = "@CC-1128_Edit_one_reagent_item",
     // tags = "@CC-1130_Edit_multiple_reagent_item",
@@ -51,7 +52,7 @@ import io.cucumber.junit.CucumberOptions;
     // tags = "@CC-1141_User_registering_tip_caddy",
     // tags = "@CC-1142_User_registering_empty_counting_plate",
     // tags = "@CC-1143_User_register_multiple_empty_96_Wells_plate",
-    tags = "@CC-1144_User_register_single_empty_one_Well_plate",
+    // tags = "@CC-1144_User_register_single_empty_one_Well_plate",
     // tags = "@CC-1152_User_register_microplate_with_content",
     // tags = "@CC-1153_User_saving_without_completing_the_required_fields",
     // tags = "@CC-1154_User_cancel_register_labware",
@@ -60,7 +61,6 @@ import io.cucumber.junit.CucumberOptions;
     // tags = "@CC-1156_User_print_barcodes_for_multiple_labware",
     // tags = "@CC-1157_User_print_barcode_while_registering_labware",
     // tags = "@CC-1159_User_attempt_to_print_barcode_for_the_prebarcoded_labware",
-
     // tags = "@CC-1160_User_attempt_to_print_barcode_while_registering_labware_as_prebarcoded",
     // tags = "@CC-1161_User_attemtp_to_print_prebarcoded_and_non-prebarcoded_labware_at_once",
 
@@ -73,7 +73,23 @@ import io.cucumber.junit.CucumberOptions;
     plugin = {"pretty", "html:target/htmlReport/reports.html",
                         "json:target/jsonReport/reports.json",
                         "junit:target/junitReport/reports.xml"}
+    // plugin = {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+    //                     "timeline:test-output-thread/"}
 )
 class TestRunner {
 
 }
+//CLI?
+// mvn test -D"cucumber.filter.tags=@smoke"
+// cucumber.ansi-colors.disabled=  # true or false. default: false
+// cucumber.execution.dry-run=     # true or false. default: false
+// cucumber.execution.limit=       # number of scenarios to execute (CLI only).
+// cucumber.execution.order=       # lexical, reverse, random or random:[seed] (CLI only). default: lexical
+// cucumber.execution.wip=         # true or false. default: false.
+// cucumber.features=              # comma separated paths to feature files. example: path/to/example.feature, path/to/other.feature
+// cucumber.filter.name=           # regex. example: .*Hello.*
+// cucumber.filter.tags=           # tag expression. example: @smoke and not @slow
+// cucumber.glue=                  # comma separated package names. example: com.example.glue
+// cucumber.plugin=                # comma separated plugin strings. example: pretty, json:path/to/report.json
+// cucumber.object-factory=        # object factory class name. example: com.example.MyObjectFactory
+// cucumber.snippet-type=          # underscore or camelcase. default: underscore

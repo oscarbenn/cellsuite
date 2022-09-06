@@ -2,7 +2,6 @@ package factory;
 
 import java.time.Duration;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -37,9 +36,6 @@ public class DriverFactory {
             } else {
                 System.out.println("Please pass the correct browser value: " + browser);
             }
-
-            // Dimension window = new Dimension(1920, 1080);
-            // getDriver().manage().window().setSize(window);
 
         } else {
             if (browser.equals("chrome")) {
